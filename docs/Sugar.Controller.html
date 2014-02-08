@@ -26,6 +26,51 @@
       </h1>
 
       
+        <div id="moduledoc" class="docstring">
+          <p>All controller actions should have an arrity of 2, with the 
+first argument being a <code>Plug.Conn</code> representing the current 
+connection and the second argument being a <code>Keyword</code> list 
+of any parameters captured in the route path.</p>
+
+<p>Sugar bundles these response helpers to assist in sending a 
+response:</p>
+
+<ul>
+<li><a href="#render/2"><code>render/2</code></a> - <code>conn</code>, <code>template</code> - sends a normal response.</li>
+<li><a href="#halt!/1"><code>halt!/1</code></a> - <code>conn</code> - ends the response.</li>
+<li><a href="#not_found/1"><code>not_found/1</code></a> - <code>conn</code> - sends a 404 (Not found) response.</li>
+<li><a href="#json/2"><code>json/2</code></a> - <code>conn</code>, <code>data</code> - sends a normal response with
+<code>data</code> encoded as JSON.</li>
+<li><a href="#raw/1"><code>raw/1</code></a> - <code>conn</code> - sends response as-is. It is expected
+that status codes, headers, body, etc have been set by
+the controller action.</li>
+</ul>
+
+<h4>Example</h4>
+
+<pre><code>defmodule Hello do
+  use Sugar.Controller
+
+  def index(conn, []) do
+    render conn, &quot;showing index controller&quot;
+  end
+
+  def show(conn, args) do
+    render conn, &quot;showing page #{args[:id]}&quot;
+  end
+
+  def create(conn, []) do
+    render conn, &quot;page created&quot;
+  end
+
+  def get_json(conn, []) do
+    json conn, [message: &quot;foobar&quot;]
+  end
+end
+</code></pre>
+
+        </div>
+      
 
       
         <a href="https://github.com/sugar-framework/sugar/blob/master/lib/sugar/controller.ex#L1" target="_blank" class="view_source">Source</a>
@@ -39,21 +84,38 @@
           <tr>
   <td class="summary_signature"><a href="#halt!/1">halt!(conn)</a></td>
   
+    <td class="summary_synopsis"><p>Ends the response.</p>
+</td>
+  
 </tr>
 <tr>
   <td class="summary_signature"><a href="#json/2">json(conn, data)</a></td>
+  
+    <td class="summary_synopsis"><p>Sends a normal response with <code>data</code> encoded as JSON.</p>
+</td>
   
 </tr>
 <tr>
   <td class="summary_signature"><a href="#not_found/1">not_found(conn)</a></td>
   
+    <td class="summary_synopsis"><p>Sends a 404 (Not found) response.</p>
+</td>
+  
 </tr>
 <tr>
   <td class="summary_signature"><a href="#raw/1">raw(conn)</a></td>
   
+    <td class="summary_synopsis"><p>Sends response as-is. It is expected that status codes, 
+headers, body, etc have been set by the controller 
+action.</p>
+</td>
+  
 </tr>
 <tr>
   <td class="summary_signature"><a href="#render/2">render(conn, template)</a></td>
+  
+    <td class="summary_synopsis"><p>Sends a normal response.</p>
+</td>
   
 </tr>
 
@@ -66,7 +128,7 @@
           <tr>
   <td class="summary_signature"><a href="#__using__/1">__using__(_)</a></td>
   
-    <td class="summary_synopsis"><p><a href="#__using__/1"><code>__using__/1</code></a> macro used to add necessary items to a controller.</p>
+    <td class="summary_synopsis"><p>Macro used to add necessary items to a controller.</p>
 </td>
   
 </tr>
@@ -86,9 +148,20 @@
     <strong>halt!(conn)</strong>
   </p>
   
-  <div class="docstring"></div>
+  <div class="docstring"><p>Ends the response.</p>
+
+<h2>Arguments</h2>
+
+<ul>
+<li><code>conn</code> - <code>Plug.Conn</code></li>
+</ul>
+
+<h2>Returns</h2>
+
+<p><code>Tuple</code> - <code>{:ok, sent_response}</code></p>
+</div>
   
-    <a href="https://github.com/sugar-framework/sugar/blob/master/lib/sugar/controller.ex#L31" target="_blank" class="view_source">Source</a>
+    <a href="https://github.com/sugar-framework/sugar/blob/master/lib/sugar/controller.ex#L119" target="_blank" class="view_source">Source</a>
   
 </div>
 <div class="detail">
@@ -96,9 +169,21 @@
     <strong>json(conn, data)</strong>
   </p>
   
-  <div class="docstring"></div>
+  <div class="docstring"><p>Sends a normal response with <code>data</code> encoded as JSON.</p>
+
+<h2>Arguments</h2>
+
+<ul>
+<li><code>conn</code> - <code>Plug.Conn</code></li>
+<li><code>data</code> - <code>Keyword|List</code></li>
+</ul>
+
+<h2>Returns</h2>
+
+<p><code>Tuple</code> - <code>{:ok, sent_response}</code></p>
+</div>
   
-    <a href="https://github.com/sugar-framework/sugar/blob/master/lib/sugar/controller.ex#L13" target="_blank" class="view_source">Source</a>
+    <a href="https://github.com/sugar-framework/sugar/blob/master/lib/sugar/controller.ex#L65" target="_blank" class="view_source">Source</a>
   
 </div>
 <div class="detail">
@@ -106,9 +191,20 @@
     <strong>not_found(conn)</strong>
   </p>
   
-  <div class="docstring"></div>
+  <div class="docstring"><p>Sends a 404 (Not found) response.</p>
+
+<h2>Arguments</h2>
+
+<ul>
+<li><code>conn</code> - <code>Plug.Conn</code></li>
+</ul>
+
+<h2>Returns</h2>
+
+<p><code>Tuple</code> - <code>{:ok, sent_response}</code></p>
+</div>
   
-    <a href="https://github.com/sugar-framework/sugar/blob/master/lib/sugar/controller.ex#L35" target="_blank" class="view_source">Source</a>
+    <a href="https://github.com/sugar-framework/sugar/blob/master/lib/sugar/controller.ex#L134" target="_blank" class="view_source">Source</a>
   
 </div>
 <div class="detail">
@@ -116,9 +212,22 @@
     <strong>raw(conn)</strong>
   </p>
   
-  <div class="docstring"></div>
+  <div class="docstring"><p>Sends response as-is. It is expected that status codes, 
+headers, body, etc have been set by the controller 
+action.</p>
+
+<h2>Arguments</h2>
+
+<ul>
+<li><code>conn</code> - <code>Plug.Conn</code></li>
+</ul>
+
+<h2>Returns</h2>
+
+<p><code>Tuple</code> - <code>{:ok, sent_response}</code></p>
+</div>
   
-    <a href="https://github.com/sugar-framework/sugar/blob/master/lib/sugar/controller.ex#L20" target="_blank" class="view_source">Source</a>
+    <a href="https://github.com/sugar-framework/sugar/blob/master/lib/sugar/controller.ex#L85" target="_blank" class="view_source">Source</a>
   
 </div>
 <div class="detail">
@@ -126,9 +235,21 @@
     <strong>render(conn, template)</strong>
   </p>
   
-  <div class="docstring"></div>
+  <div class="docstring"><p>Sends a normal response.</p>
+
+<h2>Arguments</h2>
+
+<ul>
+<li><code>conn</code> - <code>Plug.Conn</code></li>
+<li><code>template</code> - <code>String</code></li>
+</ul>
+
+<h2>Returns</h2>
+
+<p><code>Tuple</code> - <code>{:ok, sent_response}</code></p>
+</div>
   
-    <a href="https://github.com/sugar-framework/sugar/blob/master/lib/sugar/controller.ex#L24" target="_blank" class="view_source">Source</a>
+    <a href="https://github.com/sugar-framework/sugar/blob/master/lib/sugar/controller.ex#L101" target="_blank" class="view_source">Source</a>
   
 </div>
 
@@ -143,10 +264,10 @@
     <strong>__using__(_)</strong>
   </p>
   
-  <div class="docstring"><p><a href="#__using__/1"><code>__using__/1</code></a> macro used to add necessary items to a controller.</p>
+  <div class="docstring"><p>Macro used to add necessary items to a controller.</p>
 </div>
   
-    <a href="https://github.com/sugar-framework/sugar/blob/master/lib/sugar/controller.ex#L7" target="_blank" class="view_source">Source</a>
+    <a href="https://github.com/sugar-framework/sugar/blob/master/lib/sugar/controller.ex#L47" target="_blank" class="view_source">Source</a>
   
 </div>
 
