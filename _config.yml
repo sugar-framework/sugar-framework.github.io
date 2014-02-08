@@ -1,0 +1,13 @@
+markdown: rdiscount
+pygments: true
+permalink: /posts/:title
+rdiscount:
+  extensions: [smart]
+exclude: [ Gemfile, Gemfile.lock, gems, _assets, bower_components ]
+title: Sugar
+production_url: http://sugar-framework.github.io
+description: "Web framework for Elixir, built on top of Plug"
+analytics: UA-43025826-6
+author:
+  github: sugar-framework
+  twitter: sugar_framework
