@@ -36,9 +36,9 @@ of any parameters captured in the route path.</p>
 response:</p>
 
 <ul>
-<li><a href="#render/2"><code>render/2</code></a> - <code>conn</code>, <code>template</code> - sends a normal response.</li>
-<li><a href="#halt!/1"><code>halt!/1</code></a> - <code>conn</code> - ends the response.</li>
-<li><a href="#not_found/1"><code>not_found/1</code></a> - <code>conn</code> - sends a 404 (Not found) response.</li>
+<li><code>render/2</code> - <code>conn</code>, <code>template</code> - sends a normal response.</li>
+<li><code>halt!/1</code> - <code>conn</code> - ends the response.</li>
+<li><code>not_found/1</code> - <code>conn</code> - sends a 404 (Not found) response.</li>
 <li><a href="#json/2"><code>json/2</code></a> - <code>conn</code>, <code>data</code> - sends a normal response with
 <code>data</code> encoded as JSON.</li>
 <li><a href="#raw/1"><code>raw/1</code></a> - <code>conn</code> - sends response as-is. It is expected
@@ -82,7 +82,14 @@ end
         <h2 id="functions_summary">Functions summary</h2>
         <table class="summary">
           <tr>
-  <td class="summary_signature"><a href="#halt!/1">halt!(conn)</a></td>
+  <td class="summary_signature"><a href="#forward/4">forward(conn, controller, action, args \\ [])</a></td>
+  
+    <td class="summary_synopsis"><p>Forwards the response to another controller action.</p>
+</td>
+  
+</tr>
+<tr>
+  <td class="summary_signature"><a href="#halt!/2">halt!(conn, opts \\ [])</a></td>
   
     <td class="summary_synopsis"><p>Ends the response.</p>
 </td>
@@ -96,7 +103,7 @@ end
   
 </tr>
 <tr>
-  <td class="summary_signature"><a href="#not_found/1">not_found(conn)</a></td>
+  <td class="summary_signature"><a href="#not_found/2">not_found(conn, message \\ &quot;Not Found&quot;)</a></td>
   
     <td class="summary_synopsis"><p>Sends a 404 (Not found) response.</p>
 </td>
@@ -112,7 +119,14 @@ action.</p>
   
 </tr>
 <tr>
-  <td class="summary_signature"><a href="#render/2">render(conn, template)</a></td>
+  <td class="summary_signature"><a href="#redirect/3">redirect(conn, location, opts \\ [])</a></td>
+  
+    <td class="summary_synopsis"><p>Redirects the response.</p>
+</td>
+  
+</tr>
+<tr>
+  <td class="summary_signature"><a href="#render/3">render(conn, template, opts \\ [])</a></td>
   
     <td class="summary_synopsis"><p>Sends a normal response.</p>
 </td>
@@ -144,8 +158,32 @@ action.</p>
         <div id="functions_details" class="details_list">
           <h2>Functions</h2>
           <div class="detail">
-  <p class="signature" id="halt!/1">
-    <strong>halt!(conn)</strong>
+  <p class="signature" id="forward/4">
+    <strong>forward(conn, controller, action, args \\ [])</strong>
+  </p>
+  
+  <div class="docstring"><p>Forwards the response to another controller action.</p>
+
+<h2>Arguments</h2>
+
+<ul>
+<li><code>conn</code> - <code>Plug.Conn</code></li>
+<li><code>controller</code> - <code>Atom</code></li>
+<li><code>action</code> - <code>Atom</code></li>
+<li><code>args</code> - <code>Keyword</code></li>
+</ul>
+
+<h2>Returns</h2>
+
+<p><code>Tuple</code> - <code>{:ok, conn}</code></p>
+</div>
+  
+    <a href="https://github.com/sugar-framework/sugar/blob/master/lib/sugar/controller.ex#L157" target="_blank" class="view_source">Source</a>
+  
+</div>
+<div class="detail">
+  <p class="signature" id="halt!/2">
+    <strong>halt!(conn, opts \\ [])</strong>
   </p>
   
   <div class="docstring"><p>Ends the response.</p>
@@ -154,6 +192,7 @@ action.</p>
 
 <ul>
 <li><code>conn</code> - <code>Plug.Conn</code></li>
+<li><code>opts</code> - <code>Keyword</code></li>
 </ul>
 
 <h2>Returns</h2>
@@ -161,7 +200,7 @@ action.</p>
 <p><code>Tuple</code> - <code>{:ok, sent_response}</code></p>
 </div>
   
-    <a href="https://github.com/sugar-framework/sugar/blob/master/lib/sugar/controller.ex#L119" target="_blank" class="view_source">Source</a>
+    <a href="https://github.com/sugar-framework/sugar/blob/master/lib/sugar/controller.ex#L121" target="_blank" class="view_source">Source</a>
   
 </div>
 <div class="detail">
@@ -187,8 +226,8 @@ action.</p>
   
 </div>
 <div class="detail">
-  <p class="signature" id="not_found/1">
-    <strong>not_found(conn)</strong>
+  <p class="signature" id="not_found/2">
+    <strong>not_found(conn, message \\ &quot;Not Found&quot;)</strong>
   </p>
   
   <div class="docstring"><p>Sends a 404 (Not found) response.</p>
@@ -204,7 +243,7 @@ action.</p>
 <p><code>Tuple</code> - <code>{:ok, sent_response}</code></p>
 </div>
   
-    <a href="https://github.com/sugar-framework/sugar/blob/master/lib/sugar/controller.ex#L134" target="_blank" class="view_source">Source</a>
+    <a href="https://github.com/sugar-framework/sugar/blob/master/lib/sugar/controller.ex#L138" target="_blank" class="view_source">Source</a>
   
 </div>
 <div class="detail">
@@ -227,12 +266,35 @@ action.</p>
 <p><code>Tuple</code> - <code>{:ok, sent_response}</code></p>
 </div>
   
-    <a href="https://github.com/sugar-framework/sugar/blob/master/lib/sugar/controller.ex#L85" target="_blank" class="view_source">Source</a>
+    <a href="https://github.com/sugar-framework/sugar/blob/master/lib/sugar/controller.ex#L84" target="_blank" class="view_source">Source</a>
   
 </div>
 <div class="detail">
-  <p class="signature" id="render/2">
-    <strong>render(conn, template)</strong>
+  <p class="signature" id="redirect/3">
+    <strong>redirect(conn, location, opts \\ [])</strong>
+  </p>
+  
+  <div class="docstring"><p>Redirects the response.</p>
+
+<h2>Arguments</h2>
+
+<ul>
+<li><code>conn</code> - <code>Plug.Conn</code></li>
+<li><code>location</code> - <code>String</code></li>
+<li><code>opts</code> - <code>Keyword</code></li>
+</ul>
+
+<h2>Returns</h2>
+
+<p><code>Tuple</code> - <code>{:ok, sent_response}</code></p>
+</div>
+  
+    <a href="https://github.com/sugar-framework/sugar/blob/master/lib/sugar/controller.ex#L174" target="_blank" class="view_source">Source</a>
+  
+</div>
+<div class="detail">
+  <p class="signature" id="render/3">
+    <strong>render(conn, template, opts \\ [])</strong>
   </p>
   
   <div class="docstring"><p>Sends a normal response.</p>
@@ -242,6 +304,7 @@ action.</p>
 <ul>
 <li><code>conn</code> - <code>Plug.Conn</code></li>
 <li><code>template</code> - <code>String</code></li>
+<li><code>opts</code> - <code>Keyword</code></li>
 </ul>
 
 <h2>Returns</h2>
