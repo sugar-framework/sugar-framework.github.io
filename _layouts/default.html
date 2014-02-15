@@ -1,14 +1,45 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
+<html lang="en-US" itemscope itemtype="http://schema.org/Article">
+<head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ page.title }}</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>{{ page.title }} - {{ site.title }}</title>
+    <meta name="author" content="{{ site.title }}" />
+    <meta name="description" content="{{ page.excerpt | strip_html }}&hellip;" />
 
-    <meta name="author" content="{{ site.author.name }}" />
-    <meta name="description" content="{{ site.description }}" />
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="MobileOptimized" content="320" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Google -->
+    <meta itemprop="name" content="{{ page.title }} - {{ site.title }}">
+    <meta itemprop="description" content="{{ page.excerpt | strip_html }}&hellip;">
+    <!-- <meta itemprop="image" content="http://www.example.com/image.jpg"> -->
+    <!-- Facebook -->
+    <meta property="og:title" content="{{ page.title }} - {{ site.title }}"> 
+    <meta property="og:description" content="{{ page.excerpt | strip_html }}&hellip;"> 
+    <meta property="og:type" content="article">
+    {% if page %}
+        <meta property="og:url" content="{{ site.production_url }}{{ page.url }}">
+    {% else %}
+        <meta property="og:url" content="{{ site.production_url }}">
+    {% endif %}
+    <!-- <meta property="og:image" content="http://www.your-site.com/image.jpg"> -->
+    <meta property="og:site_name" content="{{ page.title }} - {{ site.title }}&hellip;">
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary">
+    {% if page %}
+        <meta property="twitter:url" content="{{ site.production_url }}{{ page.url }}">
+    {% else %}
+        <meta property="twitter:url" content="{{ site.production_url }}">
+    {% endif %}
+    <meta name="twitter:title" content="{{ page.title }} - {{ site.title }}">
+    <meta name="twitter:description" content="{{ page.excerpt | strip_html }}&hellip;">
+    <!-- <meta name="twitter:image" content="http://example.com/image.jpg"> -->
+
     <link href="/assets/img/sugar_logo.png" rel="shortcut icon">
+    <link href="{{ site.production_url }}/" rel="canonical" />
+    <link rel="alternate" type="application/rss+xml" href="{{ site.production_url }}/feed/atom.xml" title="RSS feed">
 
     <!-- Google Fonts -->
     <link href="//fonts.googleapis.com/css?family=Lato:300" rel="stylesheet">

@@ -9,7 +9,7 @@ layout: nil
     <link rel="alternate" type="text/html" href="{{ site.production_url }}"/>
     <updated>{{ site.time | date_to_xmlschema }}</updated>
     <author>
-        <name>{{ site.name }}</name>
+        <name>{{ site.title }}</name>
     </author>
     <id>{{ site.production_url }}{{ page.id }}</id>
     <rights>Copyright (c) {{ site.time | date: "%Y" }}, {{ site.nam }}; all rights reserved.</rights>{% for post in site.posts %}
