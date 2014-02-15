@@ -1,6 +1,7 @@
 ---
 layout: docs
 title: Getting Started
+permalink: /getting-started/
 ---
 
 # Getting Started
@@ -193,7 +194,7 @@ $ mix sugar.gen.controller pages
 
 Success! A new `YourProject.Controller.Pages` controller has been created for you.
 
-```elixir
+```elixir 
 defmodule YourProject.Controllers.Pages do
   use Sugar.Controller
 
