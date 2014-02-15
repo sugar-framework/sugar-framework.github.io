@@ -18,7 +18,6 @@ layout: nil
         <title type="text" xml:lang="en">{{ post.title }}</title>
         <id>{{ site.production_url }}{{ post.id }}</id>
         <link rel="alternate" type="text/html" href="{{ site.production_url }}{{ post.url }}"/>
-        <updated>{{ post.date_updated | date_to_xmlschema }}</updated>
         <published>{{ post.date | date_to_xmlschema }}</published>
         <summary type="text" xml:lang="en">{{ post.summary }}</summary>{% for category in post.categories %}
         <category term="{{ category | downcase }}" />{% endfor %}
