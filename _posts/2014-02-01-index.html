@@ -39,36 +39,30 @@ permalink: /
     <h3>GETTING STARTED</h3>
     <div class="mt"></div>
     <div class="col-lg-6">
-      <p>Take a look at our example application</p>
+      <p>Watch our video walkthrough</p>
 
-      <pre><code>
-# Clone this repo
-git clone https://github.com/sugar-framework/simple.git
-cd simple
-
-# Get project dependencies
-mix deps.get
-
-# Start the web server
-mix server # or `iex -S mix server` if you want access to iex
-      </code></pre>
+      <iframe width="420" height="315" src="//www.youtube.com/embed/_CYOWGQh7YY" frameborder="0" allowfullscreen></iframe>
     </div>
 
     <div class="col-lg-6">
-      <p>Want to use the latest and greatest in Sugar develop?</p>
+      <p>tl;dr</p>
 
-      <pre><code>
-# Clone this repo
-git clone https://github.com/sugar-framework/simple.git
-cd simple
-git checkout develop
+      <div class="highlight"><pre><code># Create your new project
+mix new your_project
+cd your_project
 
-# Get project dependencies
-mix deps.get
+# Add '{:sugar, github: "sugar-framework/sugar"}'
+# to your deps
+vi mix.exs
 
-# Start the web server
-mix server # or `iex -S mix server` if you want access to iex
-      </code></pre>
+# Get dependencies and compile them
+mix do deps.get, deps.compile
+
+# Add your Sugar files
+mix sugar.init
+
+# Start your server
+mix server</code></pre></div>
     </div>
   </div>
   
