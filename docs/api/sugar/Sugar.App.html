@@ -20,6 +20,8 @@
     </script>
 
     <div id="content">
+      <div class="breadcrumbs">Sugar v0.4.0-dev &rarr; <a href="overview.html">Overview</a> &rarr; <a href="Sugar.html">Sugar</a> &rarr; <a href="Sugar.App.html">App</a></div>
+
       <h1>
         Sugar.App
         
@@ -27,55 +29,68 @@
 
       
 
+      <ul class="summary_links">
+        
+        
+          <li><a href="#summary">Summary</a></li>
+        
+        
+          <li><a href="#functions_details">Functions</a></li>
+        
+        
+        
+        
+      </ul>
+
       
-        <a href="https://github.com/sugar-framework/sugar/blob/master/lib/sugar/app.ex#L1" target="_blank" class="view_source">Source</a>
+
       
 
       
 
       
-        <h2 id="functions_summary">Functions summary</h2>
+        <h2 id="summary">Summary<div class="detail_header_links"><a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a></div></h2>
         <table class="summary">
           <tr>
   <td class="summary_signature"><a href="#config/0">config()</a></td>
   
-    <td class="summary_synopsis"><p>Loads userland configuration if available.</p>
+    <td class="summary_synopsis"><p>Loads userland configuration if available</p>
 </td>
   
 </tr>
 <tr>
   <td class="summary_signature"><a href="#get_port/1">get_port(opts)</a></td>
   
-    <td class="summary_synopsis"><p>Grabs the application&#39;s running port number or <code>4000</code> when 
-<code>opts</code> doesn&#39;t contain the <code>:port</code> keyword.</p>
+    <td class="summary_synopsis"><p>Grabs the application&#39;s running port number or <code>4000</code> when
+<code>opts</code> doesn&#39;t contain the <code>:port</code> keyword</p>
 </td>
   
 </tr>
 <tr>
   <td class="summary_signature"><a href="#run/1">run(opts)</a></td>
   
-    <td class="summary_synopsis"><p>Used in starting the server with <code>mix server</code>.</p>
+    <td class="summary_synopsis"><p>Used in starting the server with <code>mix server</code></p>
 </td>
   
 </tr>
 <tr>
   <td class="summary_signature"><a href="#start/0">start()</a></td>
   
-    <td class="summary_synopsis"><p>Starts the application, checking if it&#39;s already been started.</p>
+    <td class="summary_synopsis"><p>Starts the application, checking if it&#39;s already been started</p>
 </td>
   
 </tr>
 <tr>
-  <td class="summary_signature"><a href="#start/2">start(_type, _args)</a></td>
+  <td class="summary_signature"><a href="#start/2">start(type, args)</a></td>
   
-    <td class="summary_synopsis"><p>Callback for <a href="#start/2"><code>start/2</code></a>. Starts the supervisor.</p>
+    <td class="summary_synopsis"><p>Callback for <a href="#start/2"><code>start/2</code></a>. Starts the supervisor</p>
 </td>
   
 </tr>
 <tr>
-  <td class="summary_signature"><a href="#stop/1">stop(_state)</a></td>
+  <td class="summary_signature"><a href="#stop/1">stop(state)</a></td>
   
-    <td class="summary_synopsis"><p>Callback for <a href="#stop/1"><code>stop/1</code></a>.</p>
+    <td class="summary_synopsis"><p>Callback for <a href="#stop/1"><code>stop/1</code></a></p>
 </td>
   
 </tr>
@@ -86,35 +101,37 @@
       
 
       
-
-      
-
-      
         <div id="functions_details" class="details_list">
           <h2>Functions</h2>
           <div class="detail">
-  <p class="signature" id="config/0">
-    <strong>config()</strong>
-  </p>
+  <div class="detail_header" id="config/0">
+    <span class="signature"><strong>config()</strong></span>
+    <div class="detail_header_links">
+      <span class="detail_type">(function)</span>
+      <a href="#config/0" class="detail_link" title="Link to this function">#</a>
+      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
+    </div>
+  </div>
   
   <div class="docstring"><p>Loads userland configuration if available.</p>
 
 <h2>Returns</h2>
 
-<ul>
-<li><code>Keyword</code></li>
-</ul>
+<p><code>Keyword</code></p>
 </div>
-  
-    <a href="https://github.com/sugar-framework/sugar/blob/master/lib/sugar/app.ex#L82" target="_blank" class="view_source">Source</a>
   
 </div>
 <div class="detail">
-  <p class="signature" id="get_port/1">
-    <strong>get_port(opts)</strong>
-  </p>
+  <div class="detail_header" id="get_port/1">
+    <span class="signature"><strong>get_port(opts)</strong></span>
+    <div class="detail_header_links">
+      <span class="detail_type">(function)</span>
+      <a href="#get_port/1" class="detail_link" title="Link to this function">#</a>
+      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
+    </div>
+  </div>
   
-  <div class="docstring"><p>Grabs the application&#39;s running port number or <code>4000</code> when 
+  <div class="docstring"><p>Grabs the application&#39;s running port number or <code>4000</code> when
 <code>opts</code> doesn&#39;t contain the <code>:port</code> keyword.</p>
 
 <h2>Arguments</h2>
@@ -125,18 +142,19 @@
 
 <h2>Returns</h2>
 
-<ul>
-<li><code>port</code> - <code>Integer</code></li>
-</ul>
+<p><code>Integer</code></p>
 </div>
-  
-    <a href="https://github.com/sugar-framework/sugar/blob/master/lib/sugar/app.ex#L67" target="_blank" class="view_source">Source</a>
   
 </div>
 <div class="detail">
-  <p class="signature" id="run/1">
-    <strong>run(opts)</strong>
-  </p>
+  <div class="detail_header" id="run/1">
+    <span class="signature"><strong>run(opts)</strong></span>
+    <div class="detail_header_links">
+      <span class="detail_type">(function)</span>
+      <a href="#run/1" class="detail_link" title="Link to this function">#</a>
+      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
+    </div>
+  </div>
   
   <div class="docstring"><p>Used in starting the server with <code>mix server</code>.</p>
 
@@ -147,40 +165,47 @@
 </ul>
 </div>
   
-    <a href="https://github.com/sugar-framework/sugar/blob/master/lib/sugar/app.ex#L14" target="_blank" class="view_source">Source</a>
-  
 </div>
 <div class="detail">
-  <p class="signature" id="start/0">
-    <strong>start()</strong>
-  </p>
+  <div class="detail_header" id="start/0">
+    <span class="signature"><strong>start()</strong></span>
+    <div class="detail_header_links">
+      <span class="detail_type">(function)</span>
+      <a href="#start/0" class="detail_link" title="Link to this function">#</a>
+      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
+    </div>
+  </div>
   
   <div class="docstring"><p>Starts the application, checking if it&#39;s already been started.</p>
 </div>
   
-    <a href="https://github.com/sugar-framework/sugar/blob/master/lib/sugar/app.ex#L29" target="_blank" class="view_source">Source</a>
-  
 </div>
 <div class="detail">
-  <p class="signature" id="start/2">
-    <strong>start(_type, _args)</strong>
-  </p>
+  <div class="detail_header" id="start/2">
+    <span class="signature"><strong>start(type, args)</strong></span>
+    <div class="detail_header_links">
+      <span class="detail_type">(function)</span>
+      <a href="#start/2" class="detail_link" title="Link to this function">#</a>
+      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
+    </div>
+  </div>
   
   <div class="docstring"><p>Callback for <a href="#start/2"><code>start/2</code></a>. Starts the supervisor.</p>
 </div>
   
-    <a href="https://github.com/sugar-framework/sugar/blob/master/lib/sugar/app.ex#L41" target="_blank" class="view_source">Source</a>
-  
 </div>
 <div class="detail">
-  <p class="signature" id="stop/1">
-    <strong>stop(_state)</strong>
-  </p>
+  <div class="detail_header" id="stop/1">
+    <span class="signature"><strong>stop(state)</strong></span>
+    <div class="detail_header_links">
+      <span class="detail_type">(function)</span>
+      <a href="#stop/1" class="detail_link" title="Link to this function">#</a>
+      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
+    </div>
+  </div>
   
   <div class="docstring"><p>Callback for <a href="#stop/1"><code>stop/1</code></a>.</p>
 </div>
-  
-    <a href="https://github.com/sugar-framework/sugar/blob/master/lib/sugar/app.ex#L2" target="_blank" class="view_source">Source</a>
   
 </div>
 

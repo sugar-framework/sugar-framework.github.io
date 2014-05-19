@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Mix.Tasks.Sugar.Gen.Model</title>
+    <title>Sugar.Templates.Finder</title>
     <meta charset="utf-8">
     <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8" />
 
@@ -20,10 +20,10 @@
     </script>
 
     <div id="content">
-      <div class="breadcrumbs">Sugar v0.4.0-dev &rarr; <a href="overview.html">Overview</a> &rarr; Mix &rarr; Tasks &rarr; Sugar &rarr; Gen &rarr; <a href="Mix.Tasks.Sugar.Gen.Model.html">Model</a></div>
+      <div class="breadcrumbs">Sugar v0.4.0-dev &rarr; <a href="overview.html">Overview</a> &rarr; <a href="Sugar.html">Sugar</a> &rarr; Templates &rarr; <a href="Sugar.Templates.Finder.html">Finder</a></div>
 
       <h1>
-        Mix.Tasks.Sugar.Gen.Model
+        Sugar.Templates.Finder
         
       </h1>
 
@@ -44,13 +44,8 @@
 
       
         <div id="moduledoc" class="docstring">
-          <p>Creates Sugar model files.</p>
-
-<h2>Command line options</h2>
-
-<ul>
-<li><code>--path</code> - override the project path. Defaults to <code>lib/[app name]</code></li>
-</ul>
+          <p>Allows for finding of templates within an applications to pass off to
+Templates for compiling/rendering.</p>
 
         </div>
       
@@ -63,14 +58,17 @@
         <h2 id="summary">Summary<div class="detail_header_links"><a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a></div></h2>
         <table class="summary">
           <tr>
-  <td class="summary_signature"><a href="#run/1">run(args)</a></td>
+  <td class="summary_signature"><a href="#all/1">all(root)</a></td>
   
-    <td class="summary_synopsis"><p>Callback implementation of <code>Mix.Task.run/1</code></p>
+    <td class="summary_synopsis"><p>Finds all templates within <code>root</code></p>
 </td>
   
 </tr>
 <tr>
-  <td class="summary_signature"><a href="#run_detached/1">run_detached(assigns)</a></td>
+  <td class="summary_signature"><a href="#one/2">one(root, key)</a></td>
+  
+    <td class="summary_synopsis"><p>Finds a template within <code>root</code> and with a given <code>key</code></p>
+</td>
   
 </tr>
 
@@ -83,30 +81,52 @@
         <div id="functions_details" class="details_list">
           <h2>Functions</h2>
           <div class="detail">
-  <div class="detail_header" id="run/1">
-    <span class="signature"><strong>run(args)</strong></span>
+  <div class="detail_header" id="all/1">
+    <span class="signature"><strong>all(root)</strong></span>
     <div class="detail_header_links">
       <span class="detail_type">(function)</span>
-      <a href="#run/1" class="detail_link" title="Link to this function">#</a>
+      <a href="#all/1" class="detail_link" title="Link to this function">#</a>
       <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
     </div>
   </div>
   
-  <div class="docstring"><p>Callback implementation of <code>Mix.Task.run/1</code>.</p>
+  <div class="docstring"><p>Finds all templates within <code>root</code></p>
+
+<h2>Arguments</h2>
+
+<ul>
+<li><code>root</code> - <code>String</code> - path to search for templates</li>
+</ul>
+
+<h2>Returns</h2>
+
+<p>List of <code>Templates.Template</code></p>
 </div>
   
 </div>
 <div class="detail">
-  <div class="detail_header" id="run_detached/1">
-    <span class="signature"><strong>run_detached(assigns)</strong></span>
+  <div class="detail_header" id="one/2">
+    <span class="signature"><strong>one(root, key)</strong></span>
     <div class="detail_header_links">
       <span class="detail_type">(function)</span>
-      <a href="#run_detached/1" class="detail_link" title="Link to this function">#</a>
+      <a href="#one/2" class="detail_link" title="Link to this function">#</a>
       <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
     </div>
   </div>
   
-  <div class="docstring"></div>
+  <div class="docstring"><p>Finds a template within <code>root</code> and with a given <code>key</code></p>
+
+<h2>Arguments</h2>
+
+<ul>
+<li><code>root</code> - <code>String</code> - path to search for template</li>
+<li><code>key</code> - <code>String</code> - key (aka local path) of template desired</li>
+</ul>
+
+<h2>Returns</h2>
+
+<p>List of <code>Templates.Template</code></p>
+</div>
   
 </div>
 

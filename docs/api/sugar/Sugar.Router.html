@@ -20,14 +20,31 @@
     </script>
 
     <div id="content">
+      <div class="breadcrumbs">Sugar v0.4.0-dev &rarr; <a href="overview.html">Overview</a> &rarr; <a href="Sugar.html">Sugar</a> &rarr; <a href="Sugar.Router.html">Router</a></div>
+
       <h1>
         Sugar.Router
         
       </h1>
 
       
+
+      <ul class="summary_links">
+        
+        
+          <li><a href="#summary">Summary</a></li>
+        
+        
+        
+          <li><a href="#macros_details">Macros</a></li>
+        
+        
+        
+      </ul>
+
+      
         <div id="moduledoc" class="docstring">
-          <p><a href="Sugar.Router.html"><code>Sugar.Router</code></a> defines an alternate format for <code>Plug.Router</code> 
+          <p><a href="Sugar.Router.html"><code>Sugar.Router</code></a> defines an alternate format for <code>Plug.Router</code>
 routing. Supports all HTTP methods that <code>Plug.Router</code> supports.</p>
 
 <p>Routes are defined with the form:</p>
@@ -35,17 +52,31 @@ routing. Supports all HTTP methods that <code>Plug.Router</code> supports.</p>
 <pre><code>method route [guard], controller, action
 </code></pre>
 
-<p><code>method</code> is <code>get</code>, <code>post</code>, <code>put</code>, <code>patch</code>, <code>delete</code>, or <code>options</code>, 
-each responsible for a single HTTP method. <code>method</code> can also be 
-<code>any</code>, which will match on all HTTP methods. <code>controller</code> is any 
-valid Elixir module name, and <code>action</code> is any valid function 
+<p><code>method</code> is <code>get</code>, <code>post</code>, <code>put</code>, <code>patch</code>, <code>delete</code>, or <code>options</code>,
+each responsible for a single HTTP method. <code>method</code> can also be
+<code>any</code>, which will match on all HTTP methods. <code>controller</code> is any
+valid Elixir module name, and <code>action</code> is any valid function
 defined in the <code>controller</code> module.</p>
 
 <h2>Example</h2>
 
 <pre><code>defmodule Router do
-  use Sugar.Router
+  use Sugar.Router, plugs: [
+    { Plugs.HotCodeReload, [] },
+    { Plug.Static, at: &quot;/static&quot;, from: :my_app },
 
+    # Uncomment the following line for session store
+    # { Plug.Session, store: :ets, key: &quot;sid&quot;, secure: true, table: :session },
+
+    # Uncomment the following line for request logging,
+    # and add &#39;applications: [:exlager],&#39; to the application
+    # Keyword list in your mix.exs
+    # { Plugs.Logger, [] }
+  ]
+
+  before_filter Filters, :set_headers
+
+  # Define your routes here
   get &quot;/&quot;, Hello, :index
   get &quot;/pages/:id&quot;, Hello, :show
   post &quot;/pages&quot;, Hello, :create
@@ -57,76 +88,72 @@ end
       
 
       
-        <a href="https://github.com/sugar-framework/sugar/blob/master/lib/sugar/router.ex#L1" target="_blank" class="view_source">Source</a>
-      
 
       
 
       
-
-      
-        <h2 id="macros_summary">Macros summary</h2>
+        <h2 id="summary">Summary<div class="detail_header_links"><a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a></div></h2>
         <table class="summary">
           <tr>
-  <td class="summary_signature"><a href="#__before_compile__/1">__before_compile__(_env)</a></td>
+  <td class="summary_signature"><a href="#__before_compile__/1">__before_compile__(env)</a></td>
   
-    <td class="summary_synopsis"><p>Defines a default route to catch all unmatched routes.</p>
+    <td class="summary_synopsis"><p>Defines a default route to catch all unmatched routes</p>
 </td>
   
 </tr>
 <tr>
   <td class="summary_signature"><a href="#__using__/1">__using__(opts)</a></td>
   
-    <td class="summary_synopsis"><p>Macro used to add necessary items to a router.</p>
+    <td class="summary_synopsis"><p>Macro used to add necessary items to a router</p>
 </td>
   
 </tr>
 <tr>
   <td class="summary_signature"><a href="#any/3">any(route, controller, action)</a></td>
   
-    <td class="summary_synopsis"><p>Macro for defining routes that match on all HTTP methods.</p>
+    <td class="summary_synopsis"><p>Macro for defining routes that match on all HTTP methods</p>
 </td>
   
 </tr>
 <tr>
   <td class="summary_signature"><a href="#delete/3">delete(route, controller, action)</a></td>
   
-    <td class="summary_synopsis"><p>Macro for defining <code>DELETE</code> routes.</p>
+    <td class="summary_synopsis"><p>Macro for defining <code>DELETE</code> routes</p>
 </td>
   
 </tr>
 <tr>
   <td class="summary_signature"><a href="#get/3">get(route, controller, action)</a></td>
   
-    <td class="summary_synopsis"><p>Macro for defining <code>GET</code> routes.</p>
+    <td class="summary_synopsis"><p>Macro for defining <code>GET</code> routes</p>
 </td>
   
 </tr>
 <tr>
   <td class="summary_signature"><a href="#options/3">options(route, controller, action)</a></td>
   
-    <td class="summary_synopsis"><p>Macro for defining <code>OPTIONS</code> routes.</p>
+    <td class="summary_synopsis"><p>Macro for defining <code>OPTIONS</code> routes</p>
 </td>
   
 </tr>
 <tr>
   <td class="summary_signature"><a href="#patch/3">patch(route, controller, action)</a></td>
   
-    <td class="summary_synopsis"><p>Macro for defining <code>PATCH</code> routes.</p>
+    <td class="summary_synopsis"><p>Macro for defining <code>PATCH</code> routes</p>
 </td>
   
 </tr>
 <tr>
   <td class="summary_signature"><a href="#post/3">post(route, controller, action)</a></td>
   
-    <td class="summary_synopsis"><p>Macro for defining <code>POST</code> routes.</p>
+    <td class="summary_synopsis"><p>Macro for defining <code>POST</code> routes</p>
 </td>
   
 </tr>
 <tr>
   <td class="summary_signature"><a href="#put/3">put(route, controller, action)</a></td>
   
-    <td class="summary_synopsis"><p>Macro for defining <code>PUT</code> routes.</p>
+    <td class="summary_synopsis"><p>Macro for defining <code>PUT</code> routes</p>
 </td>
   
 </tr>
@@ -134,7 +161,7 @@ end
   <td class="summary_signature"><a href="#resource/2">resource(route, controller)</a></td>
   
     <td class="summary_synopsis"><p>Creates RESTful resource endpoints for a route/controller
-combination.</p>
+combination</p>
 </td>
   
 </tr>
@@ -147,36 +174,45 @@ combination.</p>
       
 
       
-
-      
         <div id="macros_details" class="details_list">
           <h2>Macros</h2>
           <div class="detail">
-  <p class="signature" id="__before_compile__/1">
-    <strong>__before_compile__(_env)</strong>
-  </p>
+  <div class="detail_header" id="__before_compile__/1">
+    <span class="signature"><strong>__before_compile__(env)</strong></span>
+    <div class="detail_header_links">
+      <span class="detail_type">(macro)</span>
+      <a href="#__before_compile__/1" class="detail_link" title="Link to this macro">#</a>
+      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
+    </div>
+  </div>
   
   <div class="docstring"><p>Defines a default route to catch all unmatched routes.</p>
 </div>
   
-    <a href="https://github.com/sugar-framework/sugar/blob/master/lib/sugar/router.ex#L57" target="_blank" class="view_source">Source</a>
-  
 </div>
 <div class="detail">
-  <p class="signature" id="__using__/1">
-    <strong>__using__(opts)</strong>
-  </p>
+  <div class="detail_header" id="__using__/1">
+    <span class="signature"><strong>__using__(opts)</strong></span>
+    <div class="detail_header_links">
+      <span class="detail_type">(macro)</span>
+      <a href="#__using__/1" class="detail_link" title="Link to this macro">#</a>
+      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
+    </div>
+  </div>
   
   <div class="docstring"><p>Macro used to add necessary items to a router.</p>
 </div>
   
-    <a href="https://github.com/sugar-framework/sugar/blob/master/lib/sugar/router.ex#L33" target="_blank" class="view_source">Source</a>
-  
 </div>
 <div class="detail">
-  <p class="signature" id="any/3">
-    <strong>any(route, controller, action)</strong>
-  </p>
+  <div class="detail_header" id="any/3">
+    <span class="signature"><strong>any(route, controller, action)</strong></span>
+    <div class="detail_header_links">
+      <span class="detail_type">(macro)</span>
+      <a href="#any/3" class="detail_link" title="Link to this macro">#</a>
+      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
+    </div>
+  </div>
   
   <div class="docstring"><p>Macro for defining routes that match on all HTTP methods.</p>
 
@@ -189,13 +225,16 @@ combination.</p>
 </ul>
 </div>
   
-    <a href="https://github.com/sugar-framework/sugar/blob/master/lib/sugar/router.ex#L184" target="_blank" class="view_source">Source</a>
-  
 </div>
 <div class="detail">
-  <p class="signature" id="delete/3">
-    <strong>delete(route, controller, action)</strong>
-  </p>
+  <div class="detail_header" id="delete/3">
+    <span class="signature"><strong>delete(route, controller, action)</strong></span>
+    <div class="detail_header_links">
+      <span class="detail_type">(macro)</span>
+      <a href="#delete/3" class="detail_link" title="Link to this macro">#</a>
+      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
+    </div>
+  </div>
   
   <div class="docstring"><p>Macro for defining <code>DELETE</code> routes.</p>
 
@@ -208,13 +247,16 @@ combination.</p>
 </ul>
 </div>
   
-    <a href="https://github.com/sugar-framework/sugar/blob/master/lib/sugar/router.ex#L150" target="_blank" class="view_source">Source</a>
-  
 </div>
 <div class="detail">
-  <p class="signature" id="get/3">
-    <strong>get(route, controller, action)</strong>
-  </p>
+  <div class="detail_header" id="get/3">
+    <span class="signature"><strong>get(route, controller, action)</strong></span>
+    <div class="detail_header_links">
+      <span class="detail_type">(macro)</span>
+      <a href="#get/3" class="detail_link" title="Link to this macro">#</a>
+      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
+    </div>
+  </div>
   
   <div class="docstring"><p>Macro for defining <code>GET</code> routes.</p>
 
@@ -227,13 +269,16 @@ combination.</p>
 </ul>
 </div>
   
-    <a href="https://github.com/sugar-framework/sugar/blob/master/lib/sugar/router.ex#L82" target="_blank" class="view_source">Source</a>
-  
 </div>
 <div class="detail">
-  <p class="signature" id="options/3">
-    <strong>options(route, controller, action)</strong>
-  </p>
+  <div class="detail_header" id="options/3">
+    <span class="signature"><strong>options(route, controller, action)</strong></span>
+    <div class="detail_header_links">
+      <span class="detail_type">(macro)</span>
+      <a href="#options/3" class="detail_link" title="Link to this macro">#</a>
+      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
+    </div>
+  </div>
   
   <div class="docstring"><p>Macro for defining <code>OPTIONS</code> routes.</p>
 
@@ -246,13 +291,16 @@ combination.</p>
 </ul>
 </div>
   
-    <a href="https://github.com/sugar-framework/sugar/blob/master/lib/sugar/router.ex#L167" target="_blank" class="view_source">Source</a>
-  
 </div>
 <div class="detail">
-  <p class="signature" id="patch/3">
-    <strong>patch(route, controller, action)</strong>
-  </p>
+  <div class="detail_header" id="patch/3">
+    <span class="signature"><strong>patch(route, controller, action)</strong></span>
+    <div class="detail_header_links">
+      <span class="detail_type">(macro)</span>
+      <a href="#patch/3" class="detail_link" title="Link to this macro">#</a>
+      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
+    </div>
+  </div>
   
   <div class="docstring"><p>Macro for defining <code>PATCH</code> routes.</p>
 
@@ -265,13 +313,16 @@ combination.</p>
 </ul>
 </div>
   
-    <a href="https://github.com/sugar-framework/sugar/blob/master/lib/sugar/router.ex#L133" target="_blank" class="view_source">Source</a>
-  
 </div>
 <div class="detail">
-  <p class="signature" id="post/3">
-    <strong>post(route, controller, action)</strong>
-  </p>
+  <div class="detail_header" id="post/3">
+    <span class="signature"><strong>post(route, controller, action)</strong></span>
+    <div class="detail_header_links">
+      <span class="detail_type">(macro)</span>
+      <a href="#post/3" class="detail_link" title="Link to this macro">#</a>
+      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
+    </div>
+  </div>
   
   <div class="docstring"><p>Macro for defining <code>POST</code> routes.</p>
 
@@ -284,13 +335,16 @@ combination.</p>
 </ul>
 </div>
   
-    <a href="https://github.com/sugar-framework/sugar/blob/master/lib/sugar/router.ex#L99" target="_blank" class="view_source">Source</a>
-  
 </div>
 <div class="detail">
-  <p class="signature" id="put/3">
-    <strong>put(route, controller, action)</strong>
-  </p>
+  <div class="detail_header" id="put/3">
+    <span class="signature"><strong>put(route, controller, action)</strong></span>
+    <div class="detail_header_links">
+      <span class="detail_type">(macro)</span>
+      <a href="#put/3" class="detail_link" title="Link to this macro">#</a>
+      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
+    </div>
+  </div>
   
   <div class="docstring"><p>Macro for defining <code>PUT</code> routes.</p>
 
@@ -303,13 +357,16 @@ combination.</p>
 </ul>
 </div>
   
-    <a href="https://github.com/sugar-framework/sugar/blob/master/lib/sugar/router.ex#L116" target="_blank" class="view_source">Source</a>
-  
 </div>
 <div class="detail">
-  <p class="signature" id="resource/2">
-    <strong>resource(route, controller)</strong>
-  </p>
+  <div class="detail_header" id="resource/2">
+    <span class="signature"><strong>resource(route, controller)</strong></span>
+    <div class="detail_header_links">
+      <span class="detail_type">(macro)</span>
+      <a href="#resource/2" class="detail_link" title="Link to this macro">#</a>
+      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
+    </div>
+  </div>
   
   <div class="docstring"><p>Creates RESTful resource endpoints for a route/controller
 combination.</p>
@@ -344,8 +401,6 @@ options &quot;/path&quot; &lt;&gt; &quot;/:_id/edit&quot; do
 end
 </code></pre>
 </div>
-  
-    <a href="https://github.com/sugar-framework/sugar/blob/master/lib/sugar/router.ex#L224" target="_blank" class="view_source">Source</a>
   
 </div>
 

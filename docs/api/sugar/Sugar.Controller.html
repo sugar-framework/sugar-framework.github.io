@@ -20,19 +20,38 @@
     </script>
 
     <div id="content">
+      <div class="breadcrumbs">Sugar v0.4.0-dev &rarr; <a href="overview.html">Overview</a> &rarr; <a href="Sugar.html">Sugar</a> &rarr; <a href="Sugar.Controller.html">Controller</a></div>
+
       <h1>
         Sugar.Controller
         
       </h1>
 
       
+
+      <ul class="summary_links">
+        
+        
+          <li><a href="#summary">Summary</a></li>
+        
+        
+          <li><a href="#functions_details">Functions</a></li>
+        
+        
+          <li><a href="#macros_details">Macros</a></li>
+        
+        
+        
+      </ul>
+
+      
         <div id="moduledoc" class="docstring">
-          <p>All controller actions should have an arrity of 2, with the 
-first argument being a <code>Plug.Conn</code> representing the current 
-connection and the second argument being a <code>Keyword</code> list 
+          <p>All controller actions should have an arrity of 2, with the
+first argument being a <code>Plug.Conn</code> representing the current
+connection and the second argument being a <code>Keyword</code> list
 of any parameters captured in the route path.</p>
 
-<p>Sugar bundles these response helpers to assist in sending a 
+<p>Sugar bundles these response helpers to assist in sending a
 response:</p>
 
 <ul>
@@ -73,83 +92,72 @@ end
       
 
       
-        <a href="https://github.com/sugar-framework/sugar/blob/master/lib/sugar/controller.ex#L1" target="_blank" class="view_source">Source</a>
-      
 
       
 
       
-        <h2 id="functions_summary">Functions summary</h2>
+        <h2 id="summary">Summary<div class="detail_header_links"><a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a></div></h2>
         <table class="summary">
           <tr>
+  <td class="summary_signature"><a href="#__using__/1">__using__()</a></td>
+  
+    <td class="summary_synopsis"><p>Macro used to add necessary items to a controller</p>
+</td>
+  
+</tr>
+<tr>
   <td class="summary_signature"><a href="#forward/4">forward(conn, controller, action, args \\ [])</a></td>
   
-    <td class="summary_synopsis"><p>Forwards the response to another controller action.</p>
+    <td class="summary_synopsis"><p>Forwards the response to another controller action</p>
 </td>
   
 </tr>
 <tr>
   <td class="summary_signature"><a href="#halt!/2">halt!(conn, opts \\ [])</a></td>
   
-    <td class="summary_synopsis"><p>Ends the response.</p>
+    <td class="summary_synopsis"><p>Ends the response</p>
 </td>
   
 </tr>
 <tr>
   <td class="summary_signature"><a href="#json/2">json(conn, data)</a></td>
   
-    <td class="summary_synopsis"><p>Sends a normal response with <code>data</code> encoded as JSON.</p>
+    <td class="summary_synopsis"><p>Sends a normal response with <code>data</code> encoded as JSON</p>
 </td>
   
 </tr>
 <tr>
   <td class="summary_signature"><a href="#not_found/2">not_found(conn, message \\ &quot;Not Found&quot;)</a></td>
   
-    <td class="summary_synopsis"><p>Sends a 404 (Not found) response.</p>
+    <td class="summary_synopsis"><p>Sends a 404 (Not found) response</p>
 </td>
   
 </tr>
 <tr>
   <td class="summary_signature"><a href="#raw/1">raw(conn)</a></td>
   
-    <td class="summary_synopsis"><p>Sends response as-is. It is expected that status codes, 
-headers, body, etc have been set by the controller 
-action.</p>
+    <td class="summary_synopsis"><p>Sends response as-is. It is expected that status codes,
+headers, body, etc have been set by the controller
+action</p>
 </td>
   
 </tr>
 <tr>
   <td class="summary_signature"><a href="#redirect/3">redirect(conn, location, opts \\ [])</a></td>
   
-    <td class="summary_synopsis"><p>Redirects the response.</p>
+    <td class="summary_synopsis"><p>Redirects the response</p>
 </td>
   
 </tr>
 <tr>
-  <td class="summary_signature"><a href="#render/3">render(conn, template, opts \\ [])</a></td>
+  <td class="summary_signature"><a href="#render/4">render(conn, template_key, assigns \\ [], opts \\ [])</a></td>
   
-    <td class="summary_synopsis"><p>Sends a normal response.</p>
+    <td class="summary_synopsis"><p>Sends a normal response</p>
 </td>
   
 </tr>
 
         </table>
-      
-
-      
-        <h2 id="macros_summary">Macros summary</h2>
-        <table class="summary">
-          <tr>
-  <td class="summary_signature"><a href="#__using__/1">__using__(_)</a></td>
-  
-    <td class="summary_synopsis"><p>Macro used to add necessary items to a controller.</p>
-</td>
-  
-</tr>
-
-        </table>
-      
-
       
 
       
@@ -158,9 +166,14 @@ action.</p>
         <div id="functions_details" class="details_list">
           <h2>Functions</h2>
           <div class="detail">
-  <p class="signature" id="forward/4">
-    <strong>forward(conn, controller, action, args \\ [])</strong>
-  </p>
+  <div class="detail_header" id="forward/4">
+    <span class="signature"><strong>forward(conn, controller, action, args \\ [])</strong></span>
+    <div class="detail_header_links">
+      <span class="detail_type">(function)</span>
+      <a href="#forward/4" class="detail_link" title="Link to this function">#</a>
+      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
+    </div>
+  </div>
   
   <div class="docstring"><p>Forwards the response to another controller action.</p>
 
@@ -178,13 +191,16 @@ action.</p>
 <p><code>Tuple</code> - <code>{:ok, conn}</code></p>
 </div>
   
-    <a href="https://github.com/sugar-framework/sugar/blob/master/lib/sugar/controller.ex#L158" target="_blank" class="view_source">Source</a>
-  
 </div>
 <div class="detail">
-  <p class="signature" id="halt!/2">
-    <strong>halt!(conn, opts \\ [])</strong>
-  </p>
+  <div class="detail_header" id="halt!/2">
+    <span class="signature"><strong>halt!(conn, opts \\ [])</strong></span>
+    <div class="detail_header_links">
+      <span class="detail_type">(function)</span>
+      <a href="#halt!/2" class="detail_link" title="Link to this function">#</a>
+      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
+    </div>
+  </div>
   
   <div class="docstring"><p>Ends the response.</p>
 
@@ -200,13 +216,16 @@ action.</p>
 <p><code>Tuple</code> - <code>{:ok, sent_response}</code></p>
 </div>
   
-    <a href="https://github.com/sugar-framework/sugar/blob/master/lib/sugar/controller.ex#L122" target="_blank" class="view_source">Source</a>
-  
 </div>
 <div class="detail">
-  <p class="signature" id="json/2">
-    <strong>json(conn, data)</strong>
-  </p>
+  <div class="detail_header" id="json/2">
+    <span class="signature"><strong>json(conn, data)</strong></span>
+    <div class="detail_header_links">
+      <span class="detail_type">(function)</span>
+      <a href="#json/2" class="detail_link" title="Link to this function">#</a>
+      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
+    </div>
+  </div>
   
   <div class="docstring"><p>Sends a normal response with <code>data</code> encoded as JSON.</p>
 
@@ -222,13 +241,16 @@ action.</p>
 <p><code>Tuple</code> - <code>{:ok, sent_response}</code></p>
 </div>
   
-    <a href="https://github.com/sugar-framework/sugar/blob/master/lib/sugar/controller.ex#L66" target="_blank" class="view_source">Source</a>
-  
 </div>
 <div class="detail">
-  <p class="signature" id="not_found/2">
-    <strong>not_found(conn, message \\ &quot;Not Found&quot;)</strong>
-  </p>
+  <div class="detail_header" id="not_found/2">
+    <span class="signature"><strong>not_found(conn, message \\ &quot;Not Found&quot;)</strong></span>
+    <div class="detail_header_links">
+      <span class="detail_type">(function)</span>
+      <a href="#not_found/2" class="detail_link" title="Link to this function">#</a>
+      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
+    </div>
+  </div>
   
   <div class="docstring"><p>Sends a 404 (Not found) response.</p>
 
@@ -243,16 +265,19 @@ action.</p>
 <p><code>Tuple</code> - <code>{:ok, sent_response}</code></p>
 </div>
   
-    <a href="https://github.com/sugar-framework/sugar/blob/master/lib/sugar/controller.ex#L139" target="_blank" class="view_source">Source</a>
-  
 </div>
 <div class="detail">
-  <p class="signature" id="raw/1">
-    <strong>raw(conn)</strong>
-  </p>
+  <div class="detail_header" id="raw/1">
+    <span class="signature"><strong>raw(conn)</strong></span>
+    <div class="detail_header_links">
+      <span class="detail_type">(function)</span>
+      <a href="#raw/1" class="detail_link" title="Link to this function">#</a>
+      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
+    </div>
+  </div>
   
-  <div class="docstring"><p>Sends response as-is. It is expected that status codes, 
-headers, body, etc have been set by the controller 
+  <div class="docstring"><p>Sends response as-is. It is expected that status codes,
+headers, body, etc have been set by the controller
 action.</p>
 
 <h2>Arguments</h2>
@@ -266,13 +291,16 @@ action.</p>
 <p><code>Tuple</code> - <code>{:ok, sent_response}</code></p>
 </div>
   
-    <a href="https://github.com/sugar-framework/sugar/blob/master/lib/sugar/controller.ex#L85" target="_blank" class="view_source">Source</a>
-  
 </div>
 <div class="detail">
-  <p class="signature" id="redirect/3">
-    <strong>redirect(conn, location, opts \\ [])</strong>
-  </p>
+  <div class="detail_header" id="redirect/3">
+    <span class="signature"><strong>redirect(conn, location, opts \\ [])</strong></span>
+    <div class="detail_header_links">
+      <span class="detail_type">(function)</span>
+      <a href="#redirect/3" class="detail_link" title="Link to this function">#</a>
+      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
+    </div>
+  </div>
   
   <div class="docstring"><p>Redirects the response.</p>
 
@@ -289,13 +317,16 @@ action.</p>
 <p><code>Tuple</code> - <code>{:ok, sent_response}</code></p>
 </div>
   
-    <a href="https://github.com/sugar-framework/sugar/blob/master/lib/sugar/controller.ex#L175" target="_blank" class="view_source">Source</a>
-  
 </div>
 <div class="detail">
-  <p class="signature" id="render/3">
-    <strong>render(conn, template, opts \\ [])</strong>
-  </p>
+  <div class="detail_header" id="render/4">
+    <span class="signature"><strong>render(conn, template_key, assigns \\ [], opts \\ [])</strong></span>
+    <div class="detail_header_links">
+      <span class="detail_type">(function)</span>
+      <a href="#render/4" class="detail_link" title="Link to this function">#</a>
+      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
+    </div>
+  </div>
   
   <div class="docstring"><p>Sends a normal response.</p>
 
@@ -303,7 +334,8 @@ action.</p>
 
 <ul>
 <li><code>conn</code> - <code>Plug.Conn</code></li>
-<li><code>template</code> - <code>String</code></li>
+<li><code>template_key</code> - <code>String</code></li>
+<li><code>assigns</code> - <code>Keyword</code></li>
 <li><code>opts</code> - <code>Keyword</code></li>
 </ul>
 
@@ -311,8 +343,6 @@ action.</p>
 
 <p><code>Tuple</code> - <code>{:ok, sent_response}</code></p>
 </div>
-  
-    <a href="https://github.com/sugar-framework/sugar/blob/master/lib/sugar/controller.ex#L102" target="_blank" class="view_source">Source</a>
   
 </div>
 
@@ -323,14 +353,17 @@ action.</p>
         <div id="macros_details" class="details_list">
           <h2>Macros</h2>
           <div class="detail">
-  <p class="signature" id="__using__/1">
-    <strong>__using__(_)</strong>
-  </p>
+  <div class="detail_header" id="__using__/1">
+    <span class="signature"><strong>__using__()</strong></span>
+    <div class="detail_header_links">
+      <span class="detail_type">(macro)</span>
+      <a href="#__using__/1" class="detail_link" title="Link to this macro">#</a>
+      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
+    </div>
+  </div>
   
   <div class="docstring"><p>Macro used to add necessary items to a controller.</p>
 </div>
-  
-    <a href="https://github.com/sugar-framework/sugar/blob/master/lib/sugar/controller.ex#L47" target="_blank" class="view_source">Source</a>
   
 </div>
 

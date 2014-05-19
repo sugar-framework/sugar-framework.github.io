@@ -55,12 +55,20 @@ drwxr-xr-x   4 shane  staff   136 Feb 14 16:25 test
 See that `mix.exs` file Mix generated for us? It contains project-level configurations, one of which is the project dependencies. We need to ensure Sugar is returned by the `deps/0` function, such as:
 
 ```elixir
-defp deps do
-  [ {:sugar, github: "sugar-framework"} ]
+def deps do
+  [ {:sugar, github: "sugar-framework/sugar"} ]
 end
 ```
 
-so open it up, add the tuple for Sugar, and save it. With that done, we're going to use Mix to pull down a copy of Suagr and its dependencies and compile them, using `mix do deps.get, deps.compile`. This could also be accomplished in two commands, `mix deps.get` and `mix deps.compile`, but `mix do` allows us to chain commands, one after the other. This process can take a bit of time depending on the speed of your internet connection and computer.
+If you're running Elixir v0.13.2 or higher, [hex](https://hex.pm/) is the preferred way of adding the dependency. For a general overview of this process, checkout the [hex usage page](https://hex.pm/docs/usage). Here's the tuple needed for hex:
+
+```elixir
+def deps do
+  [ { :sugar, "0.3.0" } ]
+end
+```
+
+so open it up, add one of the tuples for Sugar, and save it. With that done, we're going to use Mix to pull down a copy of Suagr and its dependencies and compile them, using `mix do deps.get, deps.compile`. This could also be accomplished in two commands, `mix deps.get` and `mix deps.compile`, but `mix do` allows us to chain commands, one after the other. This process can take a bit of time depending on the speed of your internet connection and computer.
 
 ```
 $ mix do deps.get, deps.compile
@@ -168,10 +176,20 @@ Let's see what Sugar put in our router.
 
 ```elixir
 defmodule Router do
-  use Sugar.Router
+  use Sugar.Router, plugs: [
+    { Plugs.HotCodeReload, [] },
+    { Plug.Static, at: "/static", from: :my_app },
 
-  # Uncomment the following line for request logging
-  # plug Plugs.Logger
+    # Uncomment the following line for session store
+    # { Plug.Session, store: :ets, key: "sid", secure: true, table: :session },
+
+    # Uncomment the following line for request logging,
+    # and add 'applications: [:exlager],' to the application
+    # Keyword list in your mix.exs
+    # { Plugs.Logger, [] }
+  ]
+
+  before_filter Filters, :set_headers
 
   # Define your routes here
   get "/", Main, :index
@@ -179,6 +197,8 @@ end
 ```
 
 Routes are defined with the form `method route [guard], controller, action`, so when `get "/", YourProject.Controllers.Main, :index` is used in the router, we are telling our application to call the `index` function (action) defined in the `YourProject.Controllers.Main` module (controller) whenever the `"/"` URL is accessed.
+
+Along with defining routes, the router can also contain two other configurations: plugs and filters. Both of these allow for the modification of response on a much broader scale than what is possible with a single controller action.
 
 To see the different ways routes can be defined, checkout the documentation on [routing](/docs/routing/).
 
@@ -194,7 +214,7 @@ $ mix sugar.gen.controller pages
 
 Success! A new `YourProject.Controller.Pages` controller has been created for you.
 
-```elixir 
+```elixir
 defmodule YourProject.Controllers.Pages do
   use Sugar.Controller
 

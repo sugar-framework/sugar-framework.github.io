@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Mix.Tasks.Sugar.Gen.Model</title>
+    <title>Sugar.Exceptions</title>
     <meta charset="utf-8">
     <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8" />
 
@@ -20,10 +20,10 @@
     </script>
 
     <div id="content">
-      <div class="breadcrumbs">Sugar v0.4.0-dev &rarr; <a href="overview.html">Overview</a> &rarr; Mix &rarr; Tasks &rarr; Sugar &rarr; Gen &rarr; <a href="Mix.Tasks.Sugar.Gen.Model.html">Model</a></div>
+      <div class="breadcrumbs">Sugar v0.4.0-dev &rarr; <a href="overview.html">Overview</a> &rarr; <a href="Sugar.html">Sugar</a> &rarr; <a href="Sugar.Exceptions.html">Exceptions</a></div>
 
       <h1>
-        Mix.Tasks.Sugar.Gen.Model
+        Sugar.Exceptions
         
       </h1>
 
@@ -44,13 +44,8 @@
 
       
         <div id="moduledoc" class="docstring">
-          <p>Creates Sugar model files.</p>
-
-<h2>Command line options</h2>
-
-<ul>
-<li><code>--path</code> - override the project path. Defaults to <code>lib/[app name]</code></li>
-</ul>
+          <p>Catches runtime exceptions for displaying an error screen instead of an empty
+response in dev environments.</p>
 
         </div>
       
@@ -63,14 +58,17 @@
         <h2 id="summary">Summary<div class="detail_header_links"><a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a></div></h2>
         <table class="summary">
           <tr>
-  <td class="summary_signature"><a href="#run/1">run(args)</a></td>
+  <td class="summary_signature"><a href="#init/1">init(opts)</a></td>
   
-    <td class="summary_synopsis"><p>Callback implementation of <code>Mix.Task.run/1</code></p>
+    <td class="summary_synopsis"><p>Inits options on compile</p>
 </td>
   
 </tr>
 <tr>
-  <td class="summary_signature"><a href="#run_detached/1">run_detached(assigns)</a></td>
+  <td class="summary_signature"><a href="#wrap/3">wrap(conn, opts, fun)</a></td>
+  
+    <td class="summary_synopsis"><p>Wraps a connection for catching exceptions</p>
+</td>
   
 </tr>
 
@@ -83,30 +81,53 @@
         <div id="functions_details" class="details_list">
           <h2>Functions</h2>
           <div class="detail">
-  <div class="detail_header" id="run/1">
-    <span class="signature"><strong>run(args)</strong></span>
+  <div class="detail_header" id="init/1">
+    <span class="signature"><strong>init(opts)</strong></span>
     <div class="detail_header_links">
       <span class="detail_type">(function)</span>
-      <a href="#run/1" class="detail_link" title="Link to this function">#</a>
+      <a href="#init/1" class="detail_link" title="Link to this function">#</a>
       <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
     </div>
   </div>
   
-  <div class="docstring"><p>Callback implementation of <code>Mix.Task.run/1</code>.</p>
+  <div class="docstring"><p>Inits options on compile</p>
+
+<h2>Arguments</h2>
+
+<ul>
+<li><code>opts</code> - <code>Keyword</code></li>
+</ul>
+
+<h2>Returns</h2>
+
+<p><code>Keyword</code></p>
 </div>
   
 </div>
 <div class="detail">
-  <div class="detail_header" id="run_detached/1">
-    <span class="signature"><strong>run_detached(assigns)</strong></span>
+  <div class="detail_header" id="wrap/3">
+    <span class="signature"><strong>wrap(conn, opts, fun)</strong></span>
     <div class="detail_header_links">
       <span class="detail_type">(function)</span>
-      <a href="#run_detached/1" class="detail_link" title="Link to this function">#</a>
+      <a href="#wrap/3" class="detail_link" title="Link to this function">#</a>
       <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
     </div>
   </div>
   
-  <div class="docstring"></div>
+  <div class="docstring"><p>Wraps a connection for catching exceptions</p>
+
+<h2>Arguments</h2>
+
+<ul>
+<li><code>conn</code> - <code>Plug.Conn</code></li>
+<li><code>opts</code> - <code>Keyword</code></li>
+<li><code>fun</code> - <code>Function</code></li>
+</ul>
+
+<h2>Returns</h2>
+
+<p><code>Plug.Conn</code></p>
+</div>
   
 </div>
 

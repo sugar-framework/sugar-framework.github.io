@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>README</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8" />
+
+    <script type="text/javascript" charset="utf-8">
+      relpath = '';
+      if (relpath != '') relpath += '/';
+    </script>
+
+    <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+  </head>
+
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+
+    <div id="content">
+      <div class="breadcrumbs">Sugar v0.4.0-dev &rarr; <a href="readme.html">README</a></div>
+      <h1>Sugar</h1>
+
+<p><a href="https://travis-ci.org/sugar-framework/sugar"><img src="https://travis-ci.org/sugar-framework/sugar.png?branch=master" alt="Build Status"></a>
+<a href="https://coveralls.io/r/sugar-framework/sugar"><img src="https://coveralls.io/repos/sugar-framework/sugar/badge.png" alt="Coverage Status"></a></p>
+
+<p>Modular web framework for Elixir</p>
+
+<h2>Goals</h2>
+
+<ul>
+<li>Speed. Sugar shouldn&#39;t be slow and neither should your project.</li>
+<li>Ease. Sugar should be simple because simple is easy to learn and use.</li>
+<li>Effective. Sugar should aid development. You have better things to which to devote your time.</li>
+</ul>
+
+<h2>Reason for Existence</h2>
+
+<p>Why build this when <a href="https://github.com/dynamo/dynamo">Dynamo</a>, <a href="http://0xax.github.io/weber/">Weber</a>, and <a href="https://github.com/phoenixframework/phoenix">Phoenix</a> exist with growing communities? While both projects are great in their own right, Sugar aims to be another contender, sparking more development on all three projects (and/or others that may follow) and giving developers another option when deciding what framework fits their needs best. Sugar may even strive to shake things up just as <a href="http://www.chicagoboss.org/">ChicagoBoss</a> has done.</p>
+
+<h2>Getting Started</h2>
+
+<pre class="codeblock"><code># Clone this repo
+git clone https://github.com/sugar-framework/simple.git
+cd simple
+
+# Get project dependencies
+mix deps.get
+
+# Start the web server
+mix server # or `iex -S mix server` if you want access to iex
+</code></pre>
+
+<h3>Configurations</h3>
+
+<p>Currently, Sugars expects a <code>Config</code> module to be defined in your project that has a <code>config/0</code> function defined for configuring your application. A simple <code>Keyword</code> list is returned with the configuration values.</p>
+
+<p>Eventually, this will be replaced with a more elegant solution.</p>
+
+<p>Valid options:</p>
+
+<ul>
+<li><code>log</code> - <code>true|false</code> - turns logging on or off</li>
+<li><code>server</code> - contains options to be sent to the underlying web server (currently, only <a href="https://github.com/extend/cowboy">Cowboy</a>)
+
+<ul>
+<li><code>ip</code> - the ip to bind the server to.
+      Must be a tuple in the format <code>{ x, y, z, w }</code>.</li>
+<li><code>port</code> - the port to run the server.
+        Defaults to 4000 (http) and 4040 (https).</li>
+<li><code>acceptors</code> - the number of acceptors for the listener.
+             Defaults to 100.</li>
+<li><code>max_connections</code> - max number of connections supported.
+                   Defaults to :infinity.</li>
+<li><code>dispatch</code> - manually configure Cowboy&#39;s dispatch.</li>
+<li><code>ref</code> - the reference name to be used.
+       Defaults to <code>plug.HTTP</code> (http) and <code>plug.HTTPS</code> (https).
+       This is the value that needs to be given on shutdown.</li>
+</ul></li>
+</ul>
+
+<h4>Example</h4>
+
+<pre><code class="elixir">defmodule Config do
+  def config do
+    [
+      log: true,
+      server: [
+        port: 4000
+      ]
+    ]
+  end
+end
+</code></pre>
+
+<h3>Routers</h3>
+
+<p>Because Sugar builds upon <a href="https://github.com/elixir-lang/plug">Plug</a>, it leverages <code>Plug.Router</code> to do the heavy lifting in routing your application, adding an alternate DSL.</p>
+
+<p>Routes are defined with the form:</p>
+
+<pre class="codeblock"><code>method route [guard], controller, action
+</code></pre>
+
+<p><code>method</code> is <code>get</code>, <code>post</code>, <code>put</code>, <code>patch</code>, <code>delete</code>, or <code>options</code>, each responsible for a single HTTP method. <code>method</code> can also be <code>any</code>, which will match on all HTTP methods. <code>controller</code> is any valid Elixir module name, and <code>action</code> is any valid function defined in the <code>controller</code> module.</p>
+
+<h4>Example</h4>
+
+<pre><code class="elixir">defmodule Router do
+  use Sugar.Router
+
+  get &quot;/&quot;, Hello, :index
+  get &quot;/pages/:id&quot;, Hello, :show
+  post &quot;/pages&quot;, Hello, :create
+  put &quot;/pages/:id&quot; when id == 1, Hello, :show
+end
+</code></pre>
+
+<h3>Controllers</h3>
+
+<p>All controller actions should have an arrity of 2, with the first argument being a <code>Plug.Conn</code> representing the current connection and the second argument being a <code>Keyword</code> list of any parameters captured in the route path.</p>
+
+<p>Sugar bundles these response helpers to assist in sending a response:</p>
+
+<ul>
+<li><code>render/2</code> - sends a normal response</li>
+<li><code>not_found/1</code> - sends a 404 (Not found) response</li>
+</ul>
+
+<h4>Example</h4>
+
+<pre><code class="elixir">defmodule Hello do
+  use Sugar.Controller
+
+  def index(conn, []) do
+    render conn, &quot;index.html.eex&quot;, []
+  end
+
+  def show(conn, args) do
+    render conn, &quot;show.html.eex&quot;, args
+  end
+
+  def create(conn, []) do
+    render conn, &quot;create.html.eex&quot;, []
+  end
+end
+</code></pre>
+
+<h2>Todo Items</h2>
+
+<ul>
+<li>basic authentication (?)</li>
+<li>Development error page</li>
+<li>Caching
+
+<ul>
+<li>Compiled HTML</li>
+<li>Application Data</li>
+<li>Adapters
+
+<ul>
+<li>ETS</li>
+</ul></li>
+</ul></li>
+</ul>
+
+<h2>Who&#39;s behind this?</h2>
+
+<p>Why, the <a href="https://github.com/sugar-framework/sugar/graphs/contributors">contributors</a>, of course! Would you consider being one? Please send a pull request :)</p>
+
+<h2>How to start contributing</h2>
+
+<p>The main product of this repository is the example terms in the file <a href="https://github.com/sugar-framework/sugar/blob/master/CONTRIBUTING.md">CONTRIBUTING.md</a>. This project uses those guidelines as the basis for its own development process. Please refer to that file.</p>
+
+<h2>License</h2>
+
+<p>Sugar is released under the MIT License.</p>
+
+<p>See <a href="https://github.com/sugar-framework/sugar/blob/master/LICENSE">LICENSE</a> for details.</p>
+
+    </div>
+  </body>
+</html>
+

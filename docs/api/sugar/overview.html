@@ -18,60 +18,86 @@
     <script type="text/javascript" charset="utf-8">
       if (window.top.frames.main) document.body.className = 'frames';
     </script>
-	
-    <h1>Sugar v0.3.0-dev</h1>
 
     <div id="content">
+      <div class="breadcrumbs">Sugar v0.4.0-dev &rarr; <a href="overview.html">Overview</a></div>
+
+      <h1>Sugar v0.4.0-dev</h1>
+
+      <ul class="summary_links">
+        
+          <li><a href="#modules_summary">Modules</a></li>
+        
+        
+        
+      </ul>
+
       
-        <h2 id="modules_summary">Modules summary</h2>
+        <h2 id="modules_summary">Modules summary <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a></h2>
         <table class="summary">
           <tr>
+  <td class="summary_signature"><a href="Mix.Tasks.Compile.Sugar.html">Mix.Tasks.Compile.Sugar</a></td>
+  
+    <td class="summary_synopsis"><p>A task to compile Sugar source files</p>
+</td>
+  
+</tr>
+<tr>
   <td class="summary_signature"><a href="Mix.Tasks.Server.html">Mix.Tasks.Server</a></td>
   
-    <td class="summary_synopsis"><p>Runs Sugar and all registered children in their servers.</p>
+    <td class="summary_synopsis"><p>Runs Sugar and all registered children in their servers</p>
 </td>
   
 </tr>
 <tr>
   <td class="summary_signature"><a href="Mix.Tasks.Sugar.Gen.Config.html">Mix.Tasks.Sugar.Gen.Config</a></td>
   
-    <td class="summary_synopsis"></td>
+    <td class="summary_synopsis"><p>Creates Sugar config files</p>
+</td>
   
 </tr>
 <tr>
   <td class="summary_signature"><a href="Mix.Tasks.Sugar.Gen.Controller.html">Mix.Tasks.Sugar.Gen.Controller</a></td>
   
-    <td class="summary_synopsis"></td>
+    <td class="summary_synopsis"><p>Creates Sugar controller files</p>
+</td>
   
 </tr>
 <tr>
   <td class="summary_signature"><a href="Mix.Tasks.Sugar.Gen.Model.html">Mix.Tasks.Sugar.Gen.Model</a></td>
   
-    <td class="summary_synopsis"></td>
+    <td class="summary_synopsis"><p>Creates Sugar model files</p>
+</td>
   
 </tr>
 <tr>
   <td class="summary_signature"><a href="Mix.Tasks.Sugar.Gen.Router.html">Mix.Tasks.Sugar.Gen.Router</a></td>
   
-    <td class="summary_synopsis"></td>
+    <td class="summary_synopsis"><p>Creates Sugar router files</p>
+</td>
   
 </tr>
 <tr>
   <td class="summary_signature"><a href="Mix.Tasks.Sugar.Gen.View.html">Mix.Tasks.Sugar.Gen.View</a></td>
   
-    <td class="summary_synopsis"></td>
+    <td class="summary_synopsis"><p>Creates Sugar view files</p>
+</td>
   
 </tr>
 <tr>
   <td class="summary_signature"><a href="Mix.Tasks.Sugar.Init.html">Mix.Tasks.Sugar.Init</a></td>
   
-    <td class="summary_synopsis"></td>
+    <td class="summary_synopsis"><p>Creates Sugar support files for new projects after adding Sugar as a
+project dependency</p>
+</td>
   
 </tr>
 <tr>
   <td class="summary_signature"><a href="Mix.Tasks.Sugar.Scaffold.html">Mix.Tasks.Sugar.Scaffold</a></td>
   
-    <td class="summary_synopsis"></td>
+    <td class="summary_synopsis"><p>Creates Sugar controller, model (+ queries and migration), and view
+files for a resource</p>
+</td>
   
 </tr>
 <tr>
@@ -88,25 +114,57 @@
 <tr>
   <td class="summary_signature"><a href="Sugar.Controller.html">Sugar.Controller</a></td>
   
-    <td class="summary_synopsis"><p>All controller actions should have an arrity of 2, with the 
-first argument being a <code>Plug.Conn</code> representing the current 
-connection and the second argument being a <code>Keyword</code> list 
-of any parameters captured in the route path.</p>
+    <td class="summary_synopsis"><p>All controller actions should have an arrity of 2, with the
+first argument being a <code>Plug.Conn</code> representing the current
+connection and the second argument being a <code>Keyword</code> list
+of any parameters captured in the route path</p>
+</td>
+  
+</tr>
+<tr>
+  <td class="summary_signature"><a href="Sugar.Controller.Hooks.html">Sugar.Controller.Hooks</a></td>
+  
+    <td class="summary_synopsis"><p>Allows for before and after hooks to a controller. Each hook has the
+opportunity to modify and/or read the request&#39;s <code>conn</code> in each stage</p>
+</td>
+  
+</tr>
+<tr>
+  <td class="summary_signature"><a href="Sugar.Exceptions.html">Sugar.Exceptions</a></td>
+  
+    <td class="summary_synopsis"><p>Catches runtime exceptions for displaying an error screen instead of an empty
+response in dev environments</p>
 </td>
   
 </tr>
 <tr>
   <td class="summary_signature"><a href="Sugar.Router.html">Sugar.Router</a></td>
   
-    <td class="summary_synopsis"><p><a href="Sugar.Router.html"><code>Sugar.Router</code></a> defines an alternate format for <code>Plug.Router</code> 
-routing. Supports all HTTP methods that <code>Plug.Router</code> supports.</p>
+    <td class="summary_synopsis"><p><a href="Sugar.Router.html"><code>Sugar.Router</code></a> defines an alternate format for <code>Plug.Router</code>
+routing. Supports all HTTP methods that <code>Plug.Router</code> supports</p>
+</td>
+  
+</tr>
+<tr>
+  <td class="summary_signature"><a href="Sugar.Router.Filters.html">Sugar.Router.Filters</a></td>
+  
+    <td class="summary_synopsis"><p>Allows for before and after hooks to a controller. Each hook has the
+opportunity to modify and/or read the request&#39;s <code>conn</code> in each stage</p>
 </td>
   
 </tr>
 <tr>
   <td class="summary_signature"><a href="Sugar.Supervisor.html">Sugar.Supervisor</a></td>
   
-    <td class="summary_synopsis"><p>Sugar&#39;s base supervisor.</p>
+    <td class="summary_synopsis"><p>Sugar&#39;s base supervisor</p>
+</td>
+  
+</tr>
+<tr>
+  <td class="summary_signature"><a href="Sugar.Templates.Finder.html">Sugar.Templates.Finder</a></td>
+  
+    <td class="summary_synopsis"><p>Allows for finding of templates within an applications to pass off to
+Templates for compiling/rendering</p>
 </td>
   
 </tr>
