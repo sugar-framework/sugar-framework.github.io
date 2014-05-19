@@ -20,20 +20,16 @@
     </script>
 
     <div id="content">
-      <div class="breadcrumbs">templates v0.0.1 &rarr; <a href="overview.html">Overview</a> &rarr; <a href="Templates.html">Templates</a> &rarr; <a href="Templates.Template.html">Template</a></div>
+      <div class="breadcrumbs">templates v0.0.2-dev &rarr; <a href="overview.html">Overview</a> &rarr; <a href="Templates.html">Templates</a> &rarr; <a href="Templates.Template.html">Template</a></div>
 
       <h1>
         Templates.Template
-        
-          <small>record</small>
         
       </h1>
 
       
 
       <ul class="summary_links">
-        
-          <li><a href="#fields_summary">Fields</a></li>
         
         
         
@@ -52,7 +48,7 @@ templates to be compiled and rendered. It contains:</p>
 <ul>
 <li><code>:key</code> - The key used to find the template</li>
 <li><code>:source</code> - The source of the template</li>
-<li><code>:engine</code> - The template engine responsible for compiling the 
+<li><code>:engine</code> - The template engine responsible for compiling the
 template</li>
 <li><code>:updated_at</code> - The last time the template was updated</li>
 </ul>
@@ -63,35 +59,6 @@ template</li>
       
 
       
-        <h2 id="fields_summary">Fields <small>(and defaults)</small></h2>
-        <ul class="summary">
-          
-            <li>
-              <span class="summary_signature">
-                <strong>key:</strong> nil
-              </span>
-            </li>
-          
-            <li>
-              <span class="summary_signature">
-                <strong>source:</strong> nil
-              </span>
-            </li>
-          
-            <li>
-              <span class="summary_signature">
-                <strong>engine:</strong> nil
-              </span>
-            </li>
-          
-            <li>
-              <span class="summary_signature">
-                <strong>updated_at:</strong> nil
-              </span>
-            </li>
-          
-        </ul>
-      
 
       
 
@@ -99,80 +66,8 @@ template</li>
         <div id="types_details" class="details_list">
           <h2>Types <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a></h2>
           <div class="type_detail">
-  <p class="typespec" id="t:key/0">
-    <a href="#t:key/0">key</a> :: atom
-  </p>
-  
-</div>
-<div class="type_detail">
-  <p class="typespec" id="t:source/0">
-    <a href="#t:source/0">source</a> :: iodata
-  </p>
-  
-</div>
-<div class="type_detail">
-  <p class="typespec" id="t:engine/0">
-    <a href="#t:engine/0">engine</a> :: module
-  </p>
-  
-</div>
-<div class="type_detail">
-  <p class="typespec" id="t:year/0">
-    <a href="#t:year/0">year</a> :: pos_integer
-  </p>
-  
-</div>
-<div class="type_detail">
-  <p class="typespec" id="t:month/0">
-    <a href="#t:month/0">month</a> :: 1 .. 12
-  </p>
-  
-</div>
-<div class="type_detail">
-  <p class="typespec" id="t:day/0">
-    <a href="#t:day/0">day</a> :: 1 .. 31
-  </p>
-  
-</div>
-<div class="type_detail">
-  <p class="typespec" id="t:hour/0">
-    <a href="#t:hour/0">hour</a> :: 0 .. 24
-  </p>
-  
-</div>
-<div class="type_detail">
-  <p class="typespec" id="t:minute/0">
-    <a href="#t:minute/0">minute</a> :: 0 .. 60
-  </p>
-  
-</div>
-<div class="type_detail">
-  <p class="typespec" id="t:second/0">
-    <a href="#t:second/0">second</a> :: 0 .. 60
-  </p>
-  
-</div>
-<div class="type_detail">
-  <p class="typespec" id="t:datetime/0">
-    <a href="#t:datetime/0">datetime</a> :: {{<a href="#t:year/0">year</a>, <a href="#t:month/0">month</a>, <a href="#t:day/0">day</a>}, {<a href="#t:hour/0">hour</a>, <a href="#t:minute/0">minute</a>, <a href="#t:second/0">second</a>}}
-  </p>
-  
-</div>
-<div class="type_detail">
-  <p class="typespec" id="t:updated_at/0">
-    <a href="#t:updated_at/0">updated_at</a> :: <a href="#t:datetime/0">datetime</a>
-  </p>
-  
-</div>
-<div class="type_detail">
   <p class="typespec" id="t:t/0">
-    <a href="#t:t/0">t</a> :: {Templates.Template, <a href="#t:key/0">key</a>, <a href="#t:source/0">source</a>, <a href="#t:engine/0">engine</a>, <a href="#t:updated_at/0">updated_at</a>}
-  </p>
-  
-</div>
-<div class="type_detail">
-  <p class="typespec" id="t:options/0">
-    <a href="#t:options/0">options</a> :: [key: <a href="#t:key/0">key</a>, source: <a href="#t:source/0">source</a>, engine: <a href="#t:engine/0">engine</a>, updated_at: <a href="#t:updated_at/0">updated_at</a>] | [{<a href="http://elixir-lang.org/docs/master/String.html#t:t/0">String.t</a>, term}]
+    <a href="#t:t/0">t</a> :: %Templates.Template{key: term, source: term, engine: term, updated_at: term}
   </p>
   
 </div>

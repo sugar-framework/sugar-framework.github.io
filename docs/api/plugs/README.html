@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>README</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8" />
+
+    <script type="text/javascript" charset="utf-8">
+      relpath = '';
+      if (relpath != '') relpath += '/';
+    </script>
+
+    <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+  </head>
+
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+
+    <div id="content">
+      <div class="breadcrumbs">Plugs v0.0.2-dev &rarr; <a href="readme.html">README</a></div>
+      <h1>Plugs</h1>
+
+<h2><code>Plug.StaticFiles</code></h2>
+
+<p>Used for serving static files.</p>
+
+<p>Options:</p>
+
+<ul>
+<li><code>url</code> - for defining the url prefix for static files. </li>
+<li><code>path</code> - location of static files in project, relative to project directory root.</li>
+</ul>
+
+<p>Use:</p>
+
+<pre><code class="elixir">defmodule MyRouter do
+  use Plug.Router
+
+  plug Plugs.StaticFiles, url: &quot;/static&quot;, path: &quot;priv/static&quot;
+
+  plug :match
+  plug :dispatch
+
+  # Rest of router definition
+  ...
+end
+</code></pre>
+
+<h2><code>Plug.Logger</code></h2>
+
+<p>Used to log requests.</p>
+
+<p>Use:</p>
+
+<pre><code class="elixir">defmodule MyRouter do
+  use Plug.Router
+
+  plug Plugs.Logger
+
+  plug :match
+  plug :dispatch
+
+  # Rest of router definition
+  ...
+end
+</code></pre>
+
+<h2><code>Plug.HotCodeReload</code></h2>
+
+<p>Used to add hot code reloading to a project, preventing the need to stop, recompile, and start your application to see your changes.</p>
+
+<p>Use:</p>
+
+<pre><code class="elixir">defmodule MyRouter do
+  use Plug.Router
+
+  plug Plugs.HotCodeReload
+
+  plug :match
+  plug :dispatch
+
+  # Rest of router definition
+  ...
+end
+</code></pre>
+
+    </div>
+  </body>
+</html>
+

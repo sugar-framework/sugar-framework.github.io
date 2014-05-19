@@ -20,12 +20,10 @@
     </script>
 
     <div id="content">
-      <div class="breadcrumbs">templates v0.0.1 &rarr; <a href="overview.html">Overview</a> &rarr; <a href="Templates.html">Templates</a> &rarr; <a href="Templates.Engine.html">Engine</a></div>
+      <div class="breadcrumbs">templates v0.0.2-dev &rarr; <a href="overview.html">Overview</a> &rarr; <a href="Templates.html">Templates</a> &rarr; <a href="Templates.Engine.html">Engine</a></div>
 
       <h1>
         Templates.Engine
-        
-          <small>behaviour</small>
         
       </h1>
 
@@ -46,8 +44,8 @@
 
       
         <div id="moduledoc" class="docstring">
-          <p>Specification of the template engine API implemented 
-by engines.</p>
+          <p>Specification of the template engine API implemented
+by individual template engines.</p>
 
         </div>
       
@@ -92,7 +90,7 @@ by engines.</p>
           <h2>Callbacks</h2>
           <div class="detail">
   <div class="detail_header" id="compile/1">
-    <span class="signature"><strong>compile(template)</strong></span>
+    <span class="signature"><strong>compile/1</strong></span>
     <div class="detail_header_links">
       <span class="detail_type">(callback)</span>
       <a href="#compile/1" class="detail_link" title="Link to this callback">#</a>
@@ -109,15 +107,15 @@ by engines.</p>
   
   <div class="docstring"><p>Compiles a <code>template</code>.</p>
 
-<p>It is advised that an engine implementation removes the tremplate
-source from the record if it is not needed after compilation but
+<p>It is advised that an engine implementation removes the template
+source from the struct if it is not needed after compilation but
 retain it if needed for rendering.</p>
 </div>
   
 </div>
 <div class="detail">
   <div class="detail_header" id="render/2">
-    <span class="signature"><strong>render(template, vars)</strong></span>
+    <span class="signature"><strong>render/2</strong></span>
     <div class="detail_header_links">
       <span class="detail_type">(callback)</span>
       <a href="#render/2" class="detail_link" title="Link to this callback">#</a>
@@ -132,7 +130,7 @@ retain it if needed for rendering.</p>
       
     </ul>
   
-  <div class="docstring"><p>Renders a compiled template based on the given <code>template</code> record.</p>
+  <div class="docstring"><p>Renders a compiled template based on the given <code>template</code> struct.</p>
 </div>
   
 </div>
