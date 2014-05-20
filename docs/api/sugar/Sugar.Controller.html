@@ -55,14 +55,16 @@ of any parameters captured in the route path.</p>
 response:</p>
 
 <ul>
-<li><code>render/2</code> - <code>conn</code>, <code>template</code> - sends a normal response.</li>
-<li><code>halt!/1</code> - <code>conn</code> - ends the response.</li>
-<li><code>not_found/1</code> - <code>conn</code> - sends a 404 (Not found) response.</li>
-<li><a href="#json/2"><code>json/2</code></a> - <code>conn</code>, <code>data</code> - sends a normal response with
+<li><a href="#render/4"><code>render/4</code></a> - <code>conn</code>, <code>template_key</code>, <code>assigns</code>, <code>opts</code> - sends a normal
+response.</li>
+<li><a href="#halt!/2"><code>halt!/2</code></a> - <code>conn</code>, <code>opts</code> - ends the response.</li>
+<li><code>not_found/1</code> - <code>conn</code>, <code>message</code> - sends a 404 (Not found) response.</li>
+<li><code>json/2</code> - <code>conn</code>, <code>data</code> - sends a normal response with
 <code>data</code> encoded as JSON.</li>
 <li><a href="#raw/1"><code>raw/1</code></a> - <code>conn</code> - sends response as-is. It is expected
 that status codes, headers, body, etc have been set by
 the controller action.</li>
+<li><a href="#static/2"><code>static/2</code></a> - <code>conn</code>, <code>file</code> - reads and renders a single static file.</li>
 </ul>
 
 <h4>Example</h4>
@@ -120,7 +122,7 @@ end
   
 </tr>
 <tr>
-  <td class="summary_signature"><a href="#json/2">json(conn, data)</a></td>
+  <td class="summary_signature"><a href="#json/3">json(conn, data, opts \\ [])</a></td>
   
     <td class="summary_synopsis"><p>Sends a normal response with <code>data</code> encoded as JSON</p>
 </td>
@@ -156,6 +158,13 @@ action</p>
 </td>
   
 </tr>
+<tr>
+  <td class="summary_signature"><a href="#static/2">static(conn, file)</a></td>
+  
+    <td class="summary_synopsis"><p>reads and renders a single static file</p>
+</td>
+  
+</tr>
 
         </table>
       
@@ -188,7 +197,7 @@ action</p>
 
 <h2>Returns</h2>
 
-<p><code>Tuple</code> - <code>{:ok, conn}</code></p>
+<p><code>Plug.Conn</code></p>
 </div>
   
 </div>
@@ -213,16 +222,16 @@ action</p>
 
 <h2>Returns</h2>
 
-<p><code>Tuple</code> - <code>{:ok, sent_response}</code></p>
+<p><code>Plug.Conn</code></p>
 </div>
   
 </div>
 <div class="detail">
-  <div class="detail_header" id="json/2">
-    <span class="signature"><strong>json(conn, data)</strong></span>
+  <div class="detail_header" id="json/3">
+    <span class="signature"><strong>json(conn, data, opts \\ [])</strong></span>
     <div class="detail_header_links">
       <span class="detail_type">(function)</span>
-      <a href="#json/2" class="detail_link" title="Link to this function">#</a>
+      <a href="#json/3" class="detail_link" title="Link to this function">#</a>
       <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
     </div>
   </div>
@@ -238,7 +247,7 @@ action</p>
 
 <h2>Returns</h2>
 
-<p><code>Tuple</code> - <code>{:ok, sent_response}</code></p>
+<p><code>Plug.Conn</code></p>
 </div>
   
 </div>
@@ -262,7 +271,7 @@ action</p>
 
 <h2>Returns</h2>
 
-<p><code>Tuple</code> - <code>{:ok, sent_response}</code></p>
+<p><code>Plug.Conn</code></p>
 </div>
   
 </div>
@@ -288,7 +297,7 @@ action.</p>
 
 <h2>Returns</h2>
 
-<p><code>Tuple</code> - <code>{:ok, sent_response}</code></p>
+<p><code>Plug.Conn</code></p>
 </div>
   
 </div>
@@ -314,7 +323,7 @@ action.</p>
 
 <h2>Returns</h2>
 
-<p><code>Tuple</code> - <code>{:ok, sent_response}</code></p>
+<p><code>Plug.Conn</code></p>
 </div>
   
 </div>
@@ -341,7 +350,32 @@ action.</p>
 
 <h2>Returns</h2>
 
-<p><code>Tuple</code> - <code>{:ok, sent_response}</code></p>
+<p><code>Plug.Conn</code></p>
+</div>
+  
+</div>
+<div class="detail">
+  <div class="detail_header" id="static/2">
+    <span class="signature"><strong>static(conn, file)</strong></span>
+    <div class="detail_header_links">
+      <span class="detail_type">(function)</span>
+      <a href="#static/2" class="detail_link" title="Link to this function">#</a>
+      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
+    </div>
+  </div>
+  
+  <div class="docstring"><p>reads and renders a single static file.</p>
+
+<h2>Arguments</h2>
+
+<ul>
+<li><code>conn</code> - <code>Plug.Conn</code></li>
+<li><code>file</code> - <code>String</code></li>
+</ul>
+
+<h2>Returns</h2>
+
+<p><code>Plug.Conn</code></p>
 </div>
   
 </div>

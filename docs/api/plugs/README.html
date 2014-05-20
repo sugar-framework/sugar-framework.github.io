@@ -23,33 +23,7 @@
       <div class="breadcrumbs">Plugs v0.0.2-dev &rarr; <a href="readme.html">README</a></div>
       <h1>Plugs</h1>
 
-<h2><code>Plug.StaticFiles</code></h2>
-
-<p>Used for serving static files.</p>
-
-<p>Options:</p>
-
-<ul>
-<li><code>url</code> - for defining the url prefix for static files. </li>
-<li><code>path</code> - location of static files in project, relative to project directory root.</li>
-</ul>
-
-<p>Use:</p>
-
-<pre><code class="elixir">defmodule MyRouter do
-  use Plug.Router
-
-  plug Plugs.StaticFiles, url: &quot;/static&quot;, path: &quot;priv/static&quot;
-
-  plug :match
-  plug :dispatch
-
-  # Rest of router definition
-  ...
-end
-</code></pre>
-
-<h2><code>Plug.Logger</code></h2>
+<h2><code>Plugs.Logger</code></h2>
 
 <p>Used to log requests.</p>
 
@@ -68,7 +42,7 @@ end
 end
 </code></pre>
 
-<h2><code>Plug.HotCodeReload</code></h2>
+<h2><code>Plugs.HotCodeReload</code></h2>
 
 <p>Used to add hot code reloading to a project, preventing the need to stop, recompile, and start your application to see your changes.</p>
 
