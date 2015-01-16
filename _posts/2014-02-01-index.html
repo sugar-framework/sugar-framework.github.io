@@ -21,7 +21,7 @@ permalink: /
       <div class="col-lg-5 centered">
         <i class="fa fa-tasks" style="font-size: 16em;color:white;"></i>
       </div>
-      
+
       <div class="col-lg-7 centered">
         <h3>Goals</h3>
         <ul>
@@ -51,7 +51,7 @@ permalink: /
 mix new your_project
 cd your_project
 
-# Add '{:sugar, github: "sugar-framework/sugar"}'
+# Add '{:sugar, "~> 0.4.2"}'
 # to your deps
 vi mix.exs
 
@@ -62,19 +62,20 @@ mix do deps.get, deps.compile
 mix sugar.init
 
 # Start your server
-mix server</code></pre></div>
+iex -S mix
+iex(1)> YourProject.Router.run</code></pre></div>
     </div>
   </div>
-  
+
   <div class="row centered grid">
     <div class="mt"></div>
     <div class="col-lg-6 col-lg-offset-3">
-      <p>For an in-depth look at working with Sugar, head over to our 
-      <a href="/getting-started">Getting Started section</a>, where we walk 
+      <p>For an in-depth look at working with Sugar, head over to our
+      <a href="/getting-started">Getting Started section</a>, where we walk
       through the process of creating an application with Sugar from the start.
     </div>
-  </div> 
-  
+  </div>
+
 </div>
 
 
@@ -108,13 +109,13 @@ mix server</code></pre></div>
       <div class="mt"></div>
       <div class="col-lg-12">
         <p>
-          Why build this when <a href="https://github.com/dynamo/dynamo">Dynamo</a>, 
-          <a href="http://0xax.github.io/weber/">Weber</a>, and 
-          <a href="https://github.com/phoenixframework/phoenix">Phoenix</a> exist with 
-          growing communities? While both projects are great in their own right, Sugar 
-          aims to be another contender, sparking more development on all three projects 
-          (and/or others that may follow) and giving developers another option when 
-          deciding what framework fits their needs best. Sugar may even strive to shake 
+          Why build this when <a href="https://github.com/dynamo/dynamo">Dynamo</a>,
+          <a href="http://0xax.github.io/weber/">Weber</a>, and
+          <a href="https://github.com/phoenixframework/phoenix">Phoenix</a> exist with
+          growing communities? While both projects are great in their own right, Sugar
+          aims to be another contender, sparking more development on all three projects
+          (and/or others that may follow) and giving developers another option when
+          deciding what framework fits their needs best. Sugar may even strive to shake
           things up just as <a href="http://www.chicagoboss.org/">ChicagoBoss</a> has done.
         </p>
       </div>
