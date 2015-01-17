@@ -137,7 +137,6 @@ mix local.uninstall      # Uninstall local tasks or archives
 mix new                  # Create a new Elixir project
 mix run                  # Run the given file or expression
 mix server               # Runs Sugar and children
-mix sugar.gen.config     # Creates Sugar config files
 mix sugar.gen.controller # Creates Sugar controller files
 mix sugar.gen.router     # Creates Sugar router files
 mix sugar.gen.view       # Creates Sugar view files
@@ -152,7 +151,6 @@ Since `sugar.init` add in the necessary files for Sugar, let's run it.
 
 ```
 $ mix sugar.init
-* creating lib/your_project/config.ex
 * creating lib/your_project/router.ex
 * creating lib/your_project/controllers
 * creating lib/your_project/controllers/main.ex
@@ -176,23 +174,20 @@ Let's see what Sugar put in our router.
 
 ```elixir
 defmodule Router do
-  use Sugar.Router, plugs: [
-    { Plugs.HotCodeReload, [] },
-    { Plug.Static, at: "/static", from: :my_app },
+  use Sugar.Router
+  plug Sugar.Plugs.HotCodeReload
 
-    # Uncomment the following line for session store
-    # { Plug.Session, store: :ets, key: "sid", secure: true, table: :session },
+  if Sugar.Config.get(:sugar, :show_debugger, false) do
+    plug Plug.Debugger, otp_app: :your_project
+  end
 
-    # Uncomment the following line for request logging,
-    # and add 'applications: [:exlager],' to the application
-    # Keyword list in your mix.exs
-    # { Plugs.Logger, [] }
-  ]
+  plug Plug.Static, at: "/static", from: :you_project
 
-  before_filter Filters, :set_headers
+  # Uncomment the following line for session store
+  # plug Plug.Session, store: :etc, key: "sid", secure: true, table: :session
 
   # Define your routes here
-  get "/", Main, :index
+  get "/", YourProject.Controllers.Main, :index
 end
 ```
 

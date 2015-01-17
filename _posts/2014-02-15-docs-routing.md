@@ -24,22 +24,19 @@ Filters are called before and/or after the controller action is executed, all af
 
 ```elixir
 defmodule Router do
-  use Sugar.Router, plugs: [
-    { Plugs.HotCodeReload, [] },
-    { Plug.Static, at: "/static", from: :my_app },
+  use Sugar.Router
+  plug Sugar.Plugs.HotCodeReload
 
-    # Uncomment the following line for session store
-    # { Plug.Session, store: :ets, key: "sid", secure: true, table: :session },
+  if Sugar.Config.get(:sugar, :show_debugger, false) do
+    plug Plug.Debugger, otp_app: :your_project
+  end
 
-    # Uncomment the following line for request logging,
-    # and add 'applications: [:exlager],' to the application
-    # Keyword list in your mix.exs
-    # { Plugs.Logger, [] }
-  ]
+  plug Plug.Static, at: "/static", from: :you_project
 
-  before_filter Filters, :set_headers
+  # Uncomment the following line for session store
+  # plug Plug.Session, store: :etc, key: "sid", secure: true, table: :session
 
   # Define your routes here
-  get "/", Main, :index
+  get "/", YourProject.Controllers.Main, :index
 end
 ```
