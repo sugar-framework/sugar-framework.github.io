@@ -195,7 +195,22 @@ Routes are defined with the form `method route [guard], controller, action`, so 
 
 Along with defining routes, the router can also contain two other configurations: plugs and filters. Both of these allow for the modification of response on a much broader scale than what is possible with a single controller action.
 
-To see the different ways routes can be defined, checkout the documentation on [routing](/docs/routing/).
+### Updating our `Mix.Config`
+
+If you were to try to run your project at this time, it would probably fail. This is because the proper application environment vairables have not been set yet. Open up your `config/config.exs` file, and add these lines:
+
+```elixir
+config :sugar,
+  router: Router
+
+config :sugar, Router,
+  https_only: false,
+  http: [ port: 4000 ]
+```
+
+This let's the Sugar internals know about your `Router` module and sets the port number on which the HTTP server will listen.
+
+To see the different ways routes can be defined or routers can be configured, checkout the documentation on [routing](/docs/routing/).
 
 <section id="add-a-controller"></section>
 ## Add a Controller
