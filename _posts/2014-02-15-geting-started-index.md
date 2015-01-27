@@ -205,7 +205,8 @@ config :sugar,
 
 config :sugar, Router,
   https_only: false,
-  http: [ port: 4000 ]
+  http: [ port: 4000 ],
+  https: false
 ```
 
 This let's the Sugar internals know about your `Router` module and sets the port number on which the HTTP server will listen.
