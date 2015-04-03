@@ -64,7 +64,7 @@ If you're running Elixir v0.13.2 or higher, [hex](https://hex.pm/) is the prefer
 
 ```elixir
 def deps do
-  [ { :sugar, "~> 0.4.2" } ]
+  [ { :sugar, "~> 0.4.6" } ]
 end
 ```
 
@@ -173,7 +173,7 @@ Enter the router. You define the routes for your web application, and the router
 Let's see what Sugar put in our router.
 
 ```elixir
-defmodule Router do
+defmodule YourProject.Router do
   use Sugar.Router
   plug Sugar.Plugs.HotCodeReload
 
@@ -201,15 +201,15 @@ If you were to try to run your project at this time, it would probably fail. Thi
 
 ```elixir
 config :sugar,
-  router: Router
+  router: YourProject.Router
 
-config :sugar, Router,
+config :sugar, YourProject.Router,
   https_only: false,
   http: [ port: 4000 ],
   https: false
 ```
 
-This let's the Sugar internals know about your `Router` module and sets the port number on which the HTTP server will listen.
+This let's the Sugar internals know about your `YourProject.Router` module and sets the port number on which the HTTP server will listen.
 
 To see the different ways routes can be defined or routers can be configured, checkout the documentation on [routing](/docs/routing/).
 
