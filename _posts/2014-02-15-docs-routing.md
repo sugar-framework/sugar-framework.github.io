@@ -23,7 +23,7 @@ Filters are called before and/or after the controller action is executed, all af
 ## Example
 
 ```elixir
-defmodule Router do
+defmodule YourProject.Router do
   use Sugar.Router
   plug Sugar.Plugs.HotCodeReload
 
