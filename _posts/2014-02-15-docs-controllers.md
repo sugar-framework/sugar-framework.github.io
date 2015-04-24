@@ -38,7 +38,7 @@ defmodule Hello do
   end
 
   def get_json(conn, []) do
-    json conn, [message: "foobar"]
+    json conn, %{message: "foobar"}
   end
 end
 ```
