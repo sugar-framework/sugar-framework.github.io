@@ -36,10 +36,10 @@ defmodule MyControllerTest do
   test "returns hello world" do
     # Create a test connection
     conn = conn(:get, "/")
-    opts = MyController.init [ action: :index, args: %{} ]
+    opts = MyRouter.init [ action: :index, args: %{} ]
 
-    # Invoke the controller
-    conn = MyController.call(conn, opts)
+    # Invoke the controller via the router
+    conn = MyRouter.call(conn, opts)
 
     # Assert the response and status
     assert conn.state == :sent
