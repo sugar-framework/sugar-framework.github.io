@@ -64,7 +64,7 @@ If you're running Elixir v0.13.2 or higher, [hex](https://hex.pm/) is the prefer
 
 ```elixir
 def deps do
-  [ { :sugar, "~> 0.4.6" } ]
+  [ { :sugar, "~> 0.4.9" } ]
 end
 ```
 
