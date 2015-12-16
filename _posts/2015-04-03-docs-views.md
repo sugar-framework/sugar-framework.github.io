@@ -53,7 +53,16 @@ If you have any HTML files that aren't templated in any way, Sugar will gladly f
   end
 ```
 
-`static/2` looks in the `priv/static` folder of your project's source code.
+`static/2` looks in the `priv/static` folder of your project's source code.  You can also use `Plug.Static` in your router to serve an entire folder of static files, like so:
+
+```elixir
+defmodule YourProject.Router do
+  ...
+  plug Plug.Static, at: "/static", from: :your_project
+end
+```
+
+The above will make any files in your app's `priv/static` folder accessible to clients via the `/static` path (so, the file `priv/static/my_style.css` could be accessed from `/static/my_style.css`).  For more details on how to use `Plug.Static`, see [Plug's documentation site](http://hexdocs.pm/plug/Plug.Static.html).
 
 ## JSON
 
