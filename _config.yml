@@ -1,4 +1,3 @@
-highlighter: pygments
 permalink: /posts/:title
 relative_permalinks: false
 markdown: redcarpet
