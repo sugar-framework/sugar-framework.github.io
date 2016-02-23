@@ -68,7 +68,18 @@ def deps do
 end
 ```
 
-so open it up, add one of the tuples for Sugar, and save it. With that done, we're going to use Mix to pull down a copy of Suagr and its dependencies and compile them, using `mix do deps.get, deps.compile`. This could also be accomplished in two commands, `mix deps.get` and `mix deps.compile`, but `mix do` allows us to chain commands, one after the other. This process can take a bit of time depending on the speed of your internet connection and computer.
+so open it up, add one of the tuples for Sugar, and save it.
+
+You'll also need to add the Sugar application to your `mix.exs`, like so:
+
+```elixir
+def application do
+  [ applications: [ :sugar ],
+    mod: {YourProject, []} ]
+end
+```
+
+With that done, we're going to use Mix to pull down a copy of Suagr and its dependencies and compile them, using `mix do deps.get, deps.compile`. This could also be accomplished in two commands, `mix deps.get` and `mix deps.compile`, but `mix do` allows us to chain commands, one after the other. This process can take a bit of time depending on the speed of your internet connection and computer.
 
 ```
 $ mix do deps.get, deps.compile
