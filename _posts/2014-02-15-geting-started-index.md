@@ -70,7 +70,7 @@ end
 
 so open it up, add one of the tuples for Sugar, and save it.
 
-You'll also need to add the Sugar application to your `mix.exs`, like so:
+You'll also need to add the Sugar application to the `application/0` function in that same file, like so:
 
 ```elixir
 def application do
