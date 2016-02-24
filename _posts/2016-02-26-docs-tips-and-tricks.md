@@ -86,3 +86,44 @@ defmodule YourProject.Controllers.PhooBar do
   end
 end
 ```
+
+## Authentication
+
+Sugar ships with a `Sugar.Plugs.EnsureAuthenticated` plug that'll (unless configured with a handler that does something else) redirect clients to a login page if the client isn't currently logged in.  Using it is dead-simple.
+
+First, in your router (`lib/your_project/router.ex`), assuming that you're using an ETS-based session store (you should probably roll your own or go with encrypted cookies for production apps, at least per [Plug's own documentation](http://hexdocs.pm/plug/Plug.Session.ETS.html)):
+
+```elixir
+defmodule YourProject.Router do
+  use Sugar.Router
+  
+  # ... other router stuff
+  
+  # Uncomment the following line for session store
+  plug Plug.Session, store: :ets, key: "sid", secure: true, table: :session
+  
+  # ... other router stuff
+  
+  # This can be anything that brings the user to a login page
+  get "/login", YourProject.Controllers.Login, :new
+end
+```
+
+Next, you'll want to create an Ecto repo (like `YourProject.Repos.Main`) and a user model (like `YourProject.Models.User`), since `Sugar.Plugs.EnsureAuthenticated` assumes these to exist and behave like Ecto repos/models (but doesn't really care, so long as `YourProject.Models.User` is a struct with an `:id` field and `YourProject.Repos.Main` has a `get/2` function that returns such a struct).
+
+Finally, in the controller that you want to restrict (`lib/your_project/controllers/foo_bar.ex`):
+
+```elixir
+defmodule YourProject.Controllers.FooBar do
+  use Sugar.Controller
+  
+  plug Sugar.Plugs.EnsureAuthenticated
+  
+  def some_action(conn, _) do
+    user = conn.assigns[:current_user]          # %YourProject.Models.User{ ... }
+    conn |> render(current_user: current_user)  # or something
+  end
+end
+```
+
+Now, users will only be able to access that controller action if they're logged in (otherwise, they'll be redirected to the `/login` route).  See the [`Sugar.Plugs` README](https://github.com/sugar-framework/plugs) for more details.
