@@ -8,6 +8,8 @@ permalink: /docs/tips-and-tricks/
 
 Just a few assorted tricks of the trade for doing "real-world" work with Sugar.  The examples provided assume you've created a Sugar project called `YourProject` by following the Getting Started guide.
 
+If you'd like to contribute something you've stumbled upon, feel free to [send in a pull request](https://github.com/sugar-framework/sugar-framework.github.io) with your additions; we're happy to include all sort of community tips/tricks.
+
 ## Uploads
 
 The best way to go about this is to use `Plug.Parsers` and `Plug.Upload`.  In your router (`lib/your_project/router.ex`):
