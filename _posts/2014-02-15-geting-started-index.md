@@ -13,17 +13,17 @@ First of all, what is Mix? According to the [Introduction to Mix](http://elixir-
 
 > Mix is a build tool that provides tasks for creating, compiling, testing (and soon releasing) Elixir projects. Mix is inspired by the Leiningen build tool for Clojure and was written by one of its contributors.
 
-That sounds super, doesn't it? At the end of the day, you will use Mix for a number of reasons in your project. The first way we will use Mix today is to have it create our initial project for us with `mix new [project name]`.
+That sounds super, doesn't it? At the end of the day, you will use Mix for a number of reasons in your project. The first way we will use Mix today is to have it create our initial project for us with `mix new --sup [project name]`.
 
 ```
-$ mix new your_project
+$ mix new --sup your_project
 * creating README.md
 * creating .gitignore
 * creating mix.exs
+* creating config
+* creating config/config.exs
 * creating lib
 * creating lib/your_project.ex
-* creating lib/your_project
-* creating lib/your_project/supervisor.ex
 * creating test
 * creating test/test_helper.exs
 * creating test/your_project_test.exs
@@ -32,21 +32,21 @@ Your mix project was created successfully.
 You can use mix to compile it, test it, and more:
 
     cd your_project
-    mix compile
     mix test
 
-Run `mix help` for more information.
+Run "mix help" for more information.
 
 $ cd your_project
 $ ls -la
-total 32
+total 16
 drwxr-xr-x  11 shane  staff   374 Feb 14 16:40 .
 drwxr-xr-x  23 shane  staff   782 Feb 14 16:25 ..
--rw-r--r--   1 shane  staff    34 Feb 14 16:25 .gitignore
--rw-r--r--   1 shane  staff    36 Feb 14 16:25 README.md
-drwxr-xr-x   4 shane  staff   136 Feb 14 16:25 lib
--rw-r--r--   1 shane  staff   583 Feb 14 16:31 mix.exs
-drwxr-xr-x   4 shane  staff   136 Feb 14 16:25 test
+-rw-r--r--   1 shane  staff    41 Feb 14 16:25 .gitignore
+-rw-r--r--   1 shane  staff   428 Feb 14 16:25 README.md
+drwxr-xr-x   2 shane  staff    23 Feb 14 16:25 config
+drwxr-xr-x   4 shane  staff    28 Feb 14 16:25 lib
+-rw-r--r--   1 shane  staff   705 Feb 14 16:31 mix.exs
+drwxr-xr-x   4 shane  staff    56 Feb 14 16:25 test
 ```
 
 <section id="add-in-sugar"></section>
