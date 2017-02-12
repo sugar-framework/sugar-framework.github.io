@@ -64,7 +64,7 @@ If you're running Elixir v0.13.2 or higher, [hex](https://hex.pm/) is the prefer
 
 ```elixir
 def deps do
-  [ { :sugar, "~> 0.4.10" } ]
+  [ { :sugar, "~> 0.5" } ]
 end
 ```
 
@@ -74,7 +74,7 @@ You'll also need to add the Sugar application to the `application/0` function in
 
 ```elixir
 def application do
-  [ applications: [ :sugar ],
+  [ applications: [],
     mod: {YourProject, []} ]
 end
 ```
@@ -221,6 +221,15 @@ config :sugar, YourProject.Router,
 ```
 
 This let's the Sugar internals know about your `YourProject.Router` module and sets the port number on which the HTTP server will listen.
+Now go on with `mix server`. You will see script like this.
+
+```
+...
+Generated index.html.eex
+Generated show.html.eex
+== Sugar running in http://127.0.0.1:4000 ==
+```
+Now access to `http://127.0.0.1:4000`.
 
 To see the different ways routes can be defined or routers can be configured, checkout the documentation on [routing](/docs/routing/).
 
