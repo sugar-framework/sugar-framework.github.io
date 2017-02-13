@@ -206,6 +206,8 @@ Routes are defined with the form `method route [guard], controller, action`, so 
 
 Along with defining routes, the router can also contain two other configurations: plugs and filters. Both of these allow for the modification of response on a much broader scale than what is possible with a single controller action.
 
+To see the different ways routes can be defined or routers can be configured, checkout the documentation on [routing](/docs/routing/).
+
 ### Updating our `Mix.Config`
 
 If you were to try to run your project at this time, it would probably fail. This is because the proper application environment vairables have not been set yet. Open up your `config/config.exs` file, and add these lines:
@@ -220,8 +222,9 @@ config :sugar, YourProject.Router,
   https: false
 ```
 
-This let's the Sugar internals know about your `YourProject.Router` module and sets the port number on which the HTTP server will listen.
-Now go on with `mix server`. You will see script like this.
+This let's the Sugar internals know about the `YourProject.Router` module and sets the port number on which the HTTP server will listen.
+
+Now we're ready to run `mix server`. You should see some output in your terminal window:
 
 ```
 ...
@@ -229,9 +232,8 @@ Generated index.html.eex
 Generated show.html.eex
 == Sugar running in http://127.0.0.1:4000 ==
 ```
-Now access to `http://127.0.0.1:4000`.
 
-To see the different ways routes can be defined or routers can be configured, checkout the documentation on [routing](/docs/routing/).
+Now you can access your application at `http://127.0.0.1:4000`.
 
 <section id="add-a-controller"></section>
 ## Add a Controller
