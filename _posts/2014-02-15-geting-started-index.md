@@ -64,7 +64,7 @@ If you're running Elixir v0.13.2 or higher, [hex](https://hex.pm/) is the prefer
 
 ```elixir
 def deps do
-  [ { :sugar, "~> 0.4.10" } ]
+  [ { :sugar, "~> 0.5" } ]
 end
 ```
 
@@ -74,12 +74,14 @@ You'll also need to add the Sugar application to the `application/0` function in
 
 ```elixir
 def application do
-  [ applications: [ :sugar ],
+  [ applications: [:sugar],
     mod: {YourProject, []} ]
 end
 ```
 
-With that done, we're going to use Mix to pull down a copy of Suagr and its dependencies and compile them, using `mix do deps.get, deps.compile`. This could also be accomplished in two commands, `mix deps.get` and `mix deps.compile`, but `mix do` allows us to chain commands, one after the other. This process can take a bit of time depending on the speed of your internet connection and computer.
+As of Elixir 1.4.0, the above step is unnecessary if you're using `extra_applications` instead of `applications` (the default for new Mix projects), since Mix will automatically find Sugar in your project's dependencies and do the necessary work to make sure Sugar starts when your application starts.
+
+With all that done, we're going to use Mix to pull down a copy of Sugar and its dependencies and compile them, using `mix do deps.get, deps.compile`. This could also be accomplished in two commands, `mix deps.get` and `mix deps.compile`, but `mix do` allows us to chain commands, one after the other. This process can take a bit of time depending on the speed of your internet connection and computer.
 
 ```
 $ mix do deps.get, deps.compile
@@ -206,6 +208,8 @@ Routes are defined with the form `method route [guard], controller, action`, so 
 
 Along with defining routes, the router can also contain two other configurations: plugs and filters. Both of these allow for the modification of response on a much broader scale than what is possible with a single controller action.
 
+To see the different ways routes can be defined or routers can be configured, checkout the documentation on [routing](/docs/routing/).
+
 ### Updating our `Mix.Config`
 
 If you were to try to run your project at this time, it would probably fail. This is because the proper application environment vairables have not been set yet. Open up your `config/config.exs` file, and add these lines:
@@ -220,9 +224,18 @@ config :sugar, YourProject.Router,
   https: false
 ```
 
-This let's the Sugar internals know about your `YourProject.Router` module and sets the port number on which the HTTP server will listen.
+This let's the Sugar internals know about the `YourProject.Router` module and sets the port number on which the HTTP server will listen.
 
-To see the different ways routes can be defined or routers can be configured, checkout the documentation on [routing](/docs/routing/).
+Now we're ready to run `mix server`. You should see some output in your terminal window:
+
+```
+...
+Generated index.html.eex
+Generated show.html.eex
+== Sugar running in http://127.0.0.1:4000 ==
+```
+
+Now you can access your application at `http://127.0.0.1:4000`.
 
 <section id="add-a-controller"></section>
 ## Add a Controller
