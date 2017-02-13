@@ -74,12 +74,14 @@ You'll also need to add the Sugar application to the `application/0` function in
 
 ```elixir
 def application do
-  [ applications: [],
+  [ applications: [:sugar],
     mod: {YourProject, []} ]
 end
 ```
 
-With that done, we're going to use Mix to pull down a copy of Suagr and its dependencies and compile them, using `mix do deps.get, deps.compile`. This could also be accomplished in two commands, `mix deps.get` and `mix deps.compile`, but `mix do` allows us to chain commands, one after the other. This process can take a bit of time depending on the speed of your internet connection and computer.
+As of Elixir 1.4.0, the above step is unnecessary if you're using `extra_applications` instead of `applications` (the default for new Mix projects), since Mix will automatically find Sugar in your project's dependencies and do the necessary work to make sure Sugar starts when your application starts.
+
+With all that done, we're going to use Mix to pull down a copy of Sugar and its dependencies and compile them, using `mix do deps.get, deps.compile`. This could also be accomplished in two commands, `mix deps.get` and `mix deps.compile`, but `mix do` allows us to chain commands, one after the other. This process can take a bit of time depending on the speed of your internet connection and computer.
 
 ```
 $ mix do deps.get, deps.compile
